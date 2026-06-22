@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +79,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Find My Career — Study Abroad Consultancy in Sri Lanka" },
+      { name: "description", content: "Sri Lanka's most trusted study-abroad consultancy. 17+ years guiding students to top universities in the UK, Australia, Canada, Europe & more." },
+      { name: "author", content: "Find My Career" },
+      { property: "og:site_name", content: "Find My Career" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          name: "Find My Career",
+          url: "https://findmycareer.org.uk",
+          description: "Sri Lanka-based international education consultancy with 17+ years of experience.",
+          address: { "@type": "PostalAddress", addressCountry: "LK", addressLocality: "Colombo" },
+          areaServed: ["LK", "GB", "AU", "CA", "DE", "FR", "IE", "NZ", "US"],
+        }),
       },
     ],
   }),
@@ -105,7 +119,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body style={{ fontFamily: '"Plus Jakarta Sans", "Inter", system-ui, sans-serif' }}>
         {children}
         <Scripts />
       </body>
@@ -115,11 +129,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
     </QueryClientProvider>
   );
 }
