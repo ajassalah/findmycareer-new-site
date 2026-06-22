@@ -100,7 +100,7 @@ export function FloatingCard() {
           >
             <div
               className="absolute top-1/2 left-1/2 w-12 h-12 -ml-6 -mt-6 grid place-items-center rounded-full bg-white/90 backdrop-blur shadow-lg text-2xl"
-              style={{ transform: `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)` }}
+              style={{ transform: `translate(${(Math.cos(angle) * r).toFixed(2)}px, ${(Math.sin(angle) * r).toFixed(2)}px)` }}
             >
               {f}
             </div>
