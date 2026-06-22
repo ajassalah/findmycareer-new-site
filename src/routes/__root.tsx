@@ -85,6 +85,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Find My Career" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Find My Career — Study Abroad Consultancy in Sri Lanka" },
+      { name: "twitter:title", content: "Find My Career — Study Abroad Consultancy in Sri Lanka" },
+      { property: "og:description", content: "Sri Lanka's most trusted study-abroad consultancy. 17+ years guiding students to top universities in the UK, Australia, Canada, Europe & more." },
+      { name: "twitter:description", content: "Sri Lanka's most trusted study-abroad consultancy. 17+ years guiding students to top universities in the UK, Australia, Canada, Europe & more." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/iEQkHM2TvNOKiuoymn2WpH7sH6G2/social-images/social-1782130952352-FMC-LOGO-1-2.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/iEQkHM2TvNOKiuoymn2WpH7sH6G2/social-images/social-1782130952352-FMC-LOGO-1-2.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
