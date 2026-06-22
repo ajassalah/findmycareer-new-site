@@ -1,11 +1,40 @@
 import { motion } from "framer-motion";
-import * as CountUpMod from "react-countup";
-const CountUp: any = (CountUpMod as any).default ?? (CountUpMod as any);
+import { useEffect, useRef, useState } from "react";
 import { Trophy, Users, ShieldCheck, Building2 } from "lucide-react";
 import { STATS } from "@/lib/data";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
 const icons = [Trophy, Users, ShieldCheck, Building2];
+
+function Counter({ end, duration = 2200 }: { end: number; duration?: number }) {
+  const [v, setV] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !started.current) {
+            started.current = true;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setV(Math.round(end * eased));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [end, duration]);
+  return <span ref={ref}>{v.toLocaleString()}</span>;
+}
 
 export function StatsSection() {
   return (
@@ -36,7 +65,7 @@ export function StatsSection() {
               >
                 <Icon className="w-8 h-8 text-accent mb-4" />
                 <p className="text-4xl lg:text-5xl font-black">
-                  <CountUp end={s.value} duration={2.4} separator="," enableScrollSpy scrollSpyOnce />
+                  <Counter end={s.value} />
                   <span className="text-accent">{s.suffix}</span>
                 </p>
                 <p className="mt-2 text-sm lg:text-base text-slate-300">{s.label}</p>
