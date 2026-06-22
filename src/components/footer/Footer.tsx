@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/fmc-logo.png.asset.json";
+import logo from "@/assets/fmc-logo.png";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
 
 const socials = [
@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="bg-white rounded-xl p-3 inline-block">
-              <img src={logo.url} alt="Find My Career" className="h-12 w-auto" />
+              <img src={logo} alt="Find My Career" className="h-12 w-auto" />
             </div>
             <p className="mt-4 text-sm text-slate-300 leading-relaxed">
               Sri Lanka's most trusted education consultancy — 17+ years guiding students from

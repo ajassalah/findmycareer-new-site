@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import logo from "@/assets/fmc-logo.png.asset.json";
+import logo from "@/assets/fmc-logo.png";
 import { NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +34,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo.url} alt="Find My Career — Study Abroad Consultancy" className="h-10 lg:h-12 w-auto" />
+          <img src={logo} alt="Find My Career — Study Abroad Consultancy" className="h-10 lg:h-12 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
