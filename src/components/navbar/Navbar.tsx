@@ -34,7 +34,9 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="Find My Career — Study Abroad Consultancy" className="h-10 lg:h-12 w-auto" />
+          <span className={cn("inline-flex items-center rounded-xl transition-all", scrolled ? "p-0" : "bg-white/95 px-2 py-1 shadow-md")}>
+            <img src={logo} alt="Find My Career — Study Abroad Consultancy" className="h-9 lg:h-11 w-auto" />
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
