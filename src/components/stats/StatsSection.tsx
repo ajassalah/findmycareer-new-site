@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import CountUp from "react-countup";
+import * as CountUpMod from "react-countup";
+const CountUp: any = (CountUpMod as any).default ?? (CountUpMod as any);
 import { Trophy, Users, ShieldCheck, Building2 } from "lucide-react";
 import { STATS } from "@/lib/data";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
