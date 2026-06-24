@@ -8,6 +8,8 @@ import { Target, Eye, Sparkles, Globe2, Users, GraduationCap, Lightbulb, Heart, 
 import missionImg from "@/assets/innovator visa/Business Plan & Endorsement Section/k4hrlJDSjIhSY49xKPigmPGGrOPqGAnlC5gDCTE_COpiCI6az9lWaiR5LqMx0fh2LTJiDsVKiYMMLUkGcaklA0ZH1Wzx4a4RWtqyRNOreXd7_XcxfBhG.jfif";
 import visionImg from "@/assets/innovator visa/Hero Banner/YpBJEZlqE1dyV1-ZUoS4zdqVFGLbrzQp-NfS-95tPICEntGVuX7dbHw942ZbU0gT-wldzkMQQQRizjJVMMwzeynUNXNHI1FHfPY2SKbiZiqHemYeDszjmmCBvxf5JcPWI44KMwQJMtdG.jfif";
 import teamImg from "@/assets/innovator visa/Business Plan & Endorsement Section/5btVkbgK2EkhwbiXKDuHjqkGk6eLCL6YwPfGuuRNRFPjSQD-46f48nqP7Nryxis4nbINlgjbVCOCtVBV98Ms9fQpH2c-ealZz4MrcblKonxfONPuE_7M.jfif";
+import visionPng from "@/assets/vision.png";
+import vision1Png from "@/assets/vision1.png";
 
 export const Route = createFileRoute("/mission-vision")({
   head: () => ({
@@ -179,10 +181,10 @@ function MissionVisionPage() {
             >
               <div className="grid grid-cols-2 gap-3">
                 <div className="col-span-2 rounded-2xl overflow-hidden aspect-video shadow-xl">
-                  <img src="src\assets\vision.png" alt="Our Vision" className="w-full h-full object-cover" />
+                  <img src={visionPng} alt="Our Vision" className="w-full h-full object-cover" />
                 </div>
                 <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
-                  <img src="src\assets\vision1.png" alt="Global reach" className="w-full h-full object-cover" />
+                  <img src={vision1Png} alt="Global reach" className="w-full h-full object-cover" />
                 </div>
                 {/* Vision stat card */}
                 <motion.div

@@ -10,6 +10,8 @@ import {
 
 import heroImg from "@/assets/innovator visa/Hero Banner/YpBJEZlqE1dyV1-ZUoS4zdqVFGLbrzQp-NfS-95tPICEntGVuX7dbHw942ZbU0gT-wldzkMQQQRizjJVMMwzeynUNXNHI1FHfPY2SKbiZiqHemYeDszjmmCBvxf5JcPWI44KMwQJMtdG.jfif";
 import cardImg from "@/assets/innovator visa/Business Plan & Endorsement Section/5btVkbgK2EkhwbiXKDuHjqkGk6eLCL6YwPfGuuRNRFPjSQD-46f48nqP7Nryxis4nbINlgjbVCOCtVBV98Ms9fQpH2c-ealZz4MrcblKonxfONPuE_7M.jfif";
+import scholarshipImg1 from "@/assets/Scholarships.jfif";
+import scholarshipImg2 from "@/assets/Scholarships 1.jfif";
 
 export const Route = createFileRoute("/scholarship-guidance")({
   head: () => ({
@@ -78,7 +80,7 @@ function ScholarshipGuidancePage() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
-              <img src="src\assets\Scholarships.jfif" alt="Scholarship Guidance" className="object-cover w-full h-full" />
+              <img src={scholarshipImg1} alt="Scholarship Guidance" className="object-cover w-full h-full" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex flex-wrap gap-2">
@@ -141,7 +143,7 @@ function ScholarshipGuidancePage() {
                 </p>
               </div>
               <div className="relative rounded-2xl overflow-hidden aspect-video shadow-xl">
-                <img src="src\assets\Scholarships 1.jfif" alt="Scholarship Success" className="object-cover w-full h-full" />
+                <img src={scholarshipImg2} alt="Scholarship Success" className="object-cover w-full h-full" />
               </div>
             </div>
           </div>
