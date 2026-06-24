@@ -18,13 +18,13 @@ import careerImg from "@/assets/New Zealand/Career Success Image.jfif";
 import universitiesImg from "@/assets/New Zealand/University Section Image.jfif";
 import universitiesImg2 from "@/assets/New Zealand/University Section Image1.jfif";
 
-export const Route = createFileRoute("/destinations_/new-zealand")({
+export const Route = createFileRoute("/destinations_/study-in-new-zealand")({
   head: () => ({
     meta: [
       { title: "Study in New Zealand — Find My Career" },
       { name: "description", content: "World-Class Education, Safe Environment, Global Opportunities. Explore top universities and student life in New Zealand." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/new-zealand" }],
+    links: [{ rel: "canonical", href: "/destinations/study-in-new-zealand" }],
   }),
   component: StudyInNewZealandPage,
 });

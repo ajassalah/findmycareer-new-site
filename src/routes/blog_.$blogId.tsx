@@ -154,13 +154,13 @@ function BlogPostPage() {
               </p>
             </div>
             <Link
-              to="/apply-now"
+              to="/contact"
               className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-white font-semibold text-sm hover:scale-105 active:scale-95 transition-transform shadow-lg shrink-0"
               style={{
                 background: `linear-gradient(135deg, #0A1628, ${blog.accentColor})`,
               }}
             >
-              Apply Now <ArrowRight className="w-4 h-4" />
+              Contact Us <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

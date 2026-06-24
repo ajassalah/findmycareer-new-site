@@ -1,55 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
-import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 // Assets
-import heroImg from "@/assets/France/Suitable Image.jfif";
-import img1 from "@/assets/France/Suitable Image1.jfif";
-import img2 from "@/assets/France/Suitable Image2.jfif";
+import heroImg from "@/assets/Ireland/Suitable Image.jfif";
+import img1 from "@/assets/Ireland/Suitable Image1.jfif";
 
-export const Route = createFileRoute("/destinations_/france")({
+export const Route = createFileRoute("/destinations_/study-in-ireland")({
   head: () => ({
     meta: [
-      { title: "Study in France — Find My Career" },
-      { name: "description", content: "Discover World-Class Education in the Heart of Europe. Explore diverse academic pathways in a vibrant international environment." },
+      { title: "Study in Ireland — Find My Career" },
+      { name: "description", content: "A Global Hub for Education, Innovation & Technology. Explore excellent opportunities for academic and professional growth." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/france" }],
+    links: [{ rel: "canonical", href: "/destinations/study-in-ireland" }],
   }),
-  component: StudyInFrancePage,
+  component: StudyInIrelandPage,
 });
 
 const whyStudy = [
-  "Globally recognized universities and business schools",
-  "Affordable tuition at many public institutions",
-  "Wide range of English-taught programs",
-  "Gateway to Europe and international careers",
-  "Rich culture, history, and lifestyle",
+  "Internationally recognized degrees",
+  "Home to global technology companies",
+  "Strong career and internship opportunities",
+  "English-speaking learning environment",
+  "Welcoming and student-friendly culture",
 ];
 
 const topUnis = [
-  "Sorbonne University",
-  "Université Paris-Saclay",
-  "HEC Paris",
-  "ESSEC Business School"
+  "Trinity College Dublin",
+  "University College Dublin",
+  "University of Galway",
+  "Dublin City University"
 ];
 
-function StudyInFrancePage() {
+function StudyInIrelandPage() {
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Study Destination"
-        title={<>Study in <span className="text-accent">France</span></>}
-        subtitle="Discover World-Class Education in the Heart of Europe."
+        title={<>Study in <span className="text-accent">Ireland</span></>}
+        subtitle="A Global Hub for Education, Innovation & Technology."
         image={heroImg}
       />
 
       {/* Intro */}
       <section className="py-20 max-w-4xl mx-auto px-4 text-center">
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-          France is a top destination for international students, offering globally recognized qualifications, affordable education options, cutting-edge research opportunities, and a rich cultural experience. From business and engineering to fashion, hospitality, and arts, France provides diverse academic pathways in a vibrant international environment.
+          Ireland has become one of the fastest-growing study destinations for international students. Known for its high-quality education system, strong economy, and thriving technology sector, Ireland offers excellent opportunities for academic and professional growth.
         </motion.p>
       </section>
 
@@ -58,8 +56,8 @@ function StudyInFrancePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="space-y-6">
-              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The French Advantage</span>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in France?</h2>
+              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The Irish Advantage</span>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in Ireland?</h2>
               
               <div className="space-y-4 mt-8">
                 {whyStudy.map((item, i) => (
@@ -71,12 +69,9 @@ function StudyInFrancePage() {
               </div>
             </motion.div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="col-span-2 aspect-video rounded-3xl overflow-hidden shadow-xl">
-                <img src={img1} alt="Study in France" className="w-full h-full object-cover" />
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="col-span-2 aspect-[21/9] rounded-3xl overflow-hidden shadow-lg">
-                <img src={img2} alt="France Campus" className="w-full h-full object-cover" />
+            <div className="grid gap-4">
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+                <img src={img1} alt="Study in Ireland" className="w-full h-full object-cover" />
               </motion.div>
             </div>
           </div>
@@ -88,7 +83,7 @@ function StudyInFrancePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial="hidden" whileInView="show" viewport={viewportOnce} variants={stagger(0.1)} className="mb-16">
             <motion.span variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Excellence</motion.span>
-            <motion.h2 variants={fadeUp} className="mt-3 text-3xl md:text-4xl font-bold">Top Universities in France</motion.h2>
+            <motion.h2 variants={fadeUp} className="mt-3 text-3xl md:text-4xl font-bold">Top Universities in Ireland</motion.h2>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -105,7 +100,7 @@ function StudyInFrancePage() {
       <section className="py-20 bg-background text-center px-4">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="max-w-3xl mx-auto">
           <span className="inline-block text-xs uppercase tracking-[0.3em] text-accent font-semibold mb-4">Take the Next Step</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Begin Your French Education Journey</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Begin Your Irish Education Journey</h2>
           <p className="text-lg text-muted-foreground mb-8">
             Take the first step toward achieving your academic and career ambitions with expert guidance.
           </p>

@@ -20,7 +20,6 @@ export const NAV_LINKS = [
       { label: "Why Choose Us", to: "/why-choose-us" },
       { label: "Mission & Vision", to: "/mission-vision" },
       { label: "Success Stories", to: "/success-stories" },
-      { label: "Blog", to: "/blog" }
     ]
   },
   { 
@@ -38,18 +37,18 @@ export const NAV_LINKS = [
   { 
     label: "Destinations", 
     subItems: [
-      { label: "United Kingdom", to: "/destinations/uk" },
-      { label: "Australia", to: "/destinations/australia" },
-      { label: "Canada", to: "/destinations/canada" },
-      { label: "New Zealand", to: "/destinations/new-zealand" },
-      { label: "Germany", to: "/destinations/germany" },
-      { label: "France", to: "/destinations/france" },
-      { label: "Ireland", to: "/destinations/ireland" },
-      { label: "United States", to: "/destinations/usa" },
+      { label: "United Kingdom", to: "/destinations/study-in-uk" },
+      { label: "Australia", to: "/destinations/study-in-australia" },
+      { label: "Canada", to: "/destinations/study-in-canada" },
+      { label: "New Zealand", to: "/destinations/study-in-new-zealand" },
+      { label: "Germany", to: "/destinations/study-in-germany" },
+      { label: "France", to: "/destinations/study-in-france" },
+      { label: "Ireland", to: "/destinations/study-in-ireland" },
+      { label: "United States", to: "/destinations/study-in-usa" },
     ]
   },
   { label: "Innovator Founder visa", to: "/innovator-founder-visa" },
-  { label: "IELTS", to: "/ielts-preparation" },
+  { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -70,14 +69,14 @@ export const SERVICES = [
 ];
 
 export const DESTINATIONS = [
-  { name: "United Kingdom", flag: "🇬🇧", unis: 45, students: 3200, to: "/destinations/uk",          image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=80" },
-  { name: "Australia",      flag: "🇦🇺", unis: 28, students: 2100, to: "/destinations/australia",   image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1200&q=80" },
-  { name: "Canada",         flag: "🇨🇦", unis: 22, students: 1450, to: "/destinations/canada",      image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1200&q=80" },
-  { name: "New Zealand",    flag: "🇳🇿", unis: 9,  students: 410,  to: "/destinations/new-zealand", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80" },
-  { name: "Germany",        flag: "🇩🇪", unis: 18, students: 780,  to: "/destinations/germany",    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80" },
-  { name: "France",         flag: "🇫🇷", unis: 14, students: 520,  to: "/destinations/france",     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80" },
-  { name: "Ireland",        flag: "🇮🇪", unis: 11, students: 360,  to: "/destinations/ireland",    image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=1200&q=80" },
-  { name: "United States",  flag: "🇺🇸", unis: 19, students: 920,  to: "/destinations/usa",        image: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=1200&q=80" },
+  { name: "United Kingdom", flag: "🇬🇧", unis: 45, students: 3200, to: "/destinations/study-in-uk",          image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=80" },
+  { name: "Australia",      flag: "🇦🇺", unis: 28, students: 2100, to: "/destinations/study-in-australia",   image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1200&q=80" },
+  { name: "Canada",         flag: "🇨🇦", unis: 22, students: 1450, to: "/destinations/study-in-canada",      image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1200&q=80" },
+  { name: "New Zealand",    flag: "🇳🇿", unis: 9,  students: 410,  to: "/destinations/study-in-new-zealand", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80" },
+  { name: "Germany",        flag: "🇩🇪", unis: 18, students: 780,  to: "/destinations/study-in-germany",    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80" },
+  { name: "France",         flag: "🇫🇷", unis: 14, students: 520,  to: "/destinations/study-in-france",     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=80" },
+  { name: "Ireland",        flag: "🇮🇪", unis: 11, students: 360,  to: "/destinations/study-in-ireland",    image: "https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=1200&q=80" },
+  { name: "United States",  flag: "🇺🇸", unis: 19, students: 920,  to: "/destinations/study-in-usa",        image: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=1200&q=80" },
 ];
 
 export const STEPS = [

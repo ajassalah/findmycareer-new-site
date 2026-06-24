@@ -4,109 +4,107 @@ import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 import {
-  GraduationCap, Award, Globe2, Briefcase, HeartPulse, Wrench,
-  Building2, Monitor, LineChart, Utensils, CheckCircle2, ArrowRight,
-  MapPin, Building, Target, Search, Plane
+  GraduationCap, Clock, Award, Globe2, Lightbulb, Briefcase,
+  Building2, Monitor, Wrench, HeartPulse, Scale, Utensils,
+  CheckCircle2, ArrowRight, MapPin, Building, Target, Search, Plane
 } from "lucide-react";
 
 // Assets
-import heroImg from "@/assets/Australia/Hero Image.jfif";
-import studentLife1 from "@/assets/Australia/Student Life Images.jfif";
-import studentLife2 from "@/assets/Australia/Student Life Images1.jfif";
-import studentLife3 from "@/assets/Australia/Student Life Images2.jfif";
-import careerImg from "@/assets/Australia/Career Success Images.jfif";
-import universitiesImg from "@/assets/Australia/University Section Images.jfif";
-import universitiesImg2 from "@/assets/Australia/University Section Images1.jfif";
+import heroImg from "@/assets/uk/uk hero image.jfif";
+import whyStudyImg from "@/assets/uk/Why Study in the UK Section Images.jfif";
+import whyStudyImg2 from "@/assets/uk/Why Study in the UK Section Images1.jfif";
+import careerImg from "@/assets/uk/Career & Success Section Images.jfif";
+import universitiesImg from "@/assets/uk/UK Universities.jfif";
+import citiesImg from "@/assets/uk/UK Cities & Student Experience.jfif";
+import studentLifeImg from "@/assets/uk/Student Life in the UK.jfif";
 
-export const Route = createFileRoute("/destinations_/australia")({
+export const Route = createFileRoute("/destinations_/study-in-uk")({
   head: () => ({
     meta: [
-      { title: "Study in Australia — Find My Career" },
-      { name: "description", content: "World-Class Education, Exceptional Lifestyle, Global Career Opportunities. Explore top universities and student life in Australia." },
+      { title: "Study in the UK — Find My Career" },
+      { name: "description", content: "World-Class Education, Global Opportunities, Bright Future. Explore top universities, costs, and student life in the United Kingdom." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/australia" }],
+    links: [{ rel: "canonical", href: "/destinations/study-in-uk" }],
   }),
-  component: StudyInAustraliaPage,
+  component: StudyInUkPage,
 });
 
 const whyStudy = [
-  { icon: Award, title: "Globally Recognized", desc: "Australian degrees are respected and recognized by employers, universities, and professional organizations around the world." },
-  { icon: GraduationCap, title: "World-Class Universities", desc: "Home to several globally ranked universities known for excellence in teaching, research, and innovation." },
-  { icon: Briefcase, title: "Post-Study Work", desc: "Attractive post-study work pathways, allowing eligible graduates to gain valuable international work experience." },
-  { icon: HeartPulse, title: "High Quality of Life", desc: "Consistently ranks among the world's best countries for quality of life, safety, healthcare, and student satisfaction." },
-  { icon: Globe2, title: "Multicultural Environment", desc: "Students from over 190 countries choose Australia each year, creating a diverse international community." },
-  { icon: Wrench, title: "Industry-Focused", desc: "Australian institutions emphasize practical learning, internships, and real-world industry experience." },
+  { icon: Award, title: "Globally Recognized", desc: "Home to prestigious institutions known for academic excellence and innovation." },
+  { icon: Clock, title: "Shorter Course Duration", desc: "Undergraduate degrees in 3 years, Master's in 1 year, saving time and tuition costs." },
+  { icon: GraduationCap, title: "High-Quality Education", desc: "Rigorous academic standards, modern facilities, and industry-focused programs." },
+  { icon: Globe2, title: "Multicultural Environment", desc: "A diverse and welcoming international community from around the world." },
+  { icon: Lightbulb, title: "Research & Innovation", desc: "Global leader in research, tech, business innovation, and creative industries." },
+  { icon: Briefcase, title: "Post-Study Work", desc: "Eligible graduates can gain valuable professional experience after completing studies." },
 ];
 
 const programs = [
-  { icon: Building2, title: "Business & Management", desc: "Develop leadership, entrepreneurship, and strategic management skills." },
-  { icon: Monitor, title: "IT & Cybersecurity", desc: "Study software development, artificial intelligence, data science, and cybersecurity." },
-  { icon: Wrench, title: "Engineering", desc: "Explore civil, mechanical, electrical, mining, and environmental engineering disciplines." },
-  { icon: HeartPulse, title: "Nursing & Healthcare", desc: "Internationally respected healthcare and nursing programs with practical training opportunities." },
-  { icon: LineChart, title: "Accounting & Finance", desc: "Prepare for global careers in banking, finance, auditing, and business consultancy." },
-  { icon: Utensils, title: "Hospitality & Tourism", desc: "Gain industry-focused skills in one of Australia's strongest sectors." },
+  { icon: Building2, title: "Business & Management", desc: "Develop leadership and strategic management skills in globally recognized business schools." },
+  { icon: Monitor, title: "Computer Science & AI", desc: "Study cutting-edge tech including AI, cybersecurity, software engineering, and data science." },
+  { icon: Wrench, title: "Engineering", desc: "Explore mechanical, civil, electrical, aerospace, and advanced engineering disciplines." },
+  { icon: HeartPulse, title: "Health & Nursing", desc: "Gain practical knowledge in healthcare, nursing, public health, and medical sciences." },
+  { icon: Scale, title: "Law", desc: "Study internationally respected legal systems and develop professional legal expertise." },
+  { icon: Utensils, title: "Hospitality & Tourism", desc: "Prepare for careers in one of the world's largest and fastest-growing industries." },
 ];
 
-const workBenefits = [
-  "Practical work experience",
-  "Professional networking opportunities",
-  "Additional income support",
-  "Enhanced employability after graduation",
-];
-
-const scholarships = [
-  "Merit-Based Scholarships",
-  "Academic Excellence Awards",
-  "Research Scholarships",
-  "International Student Grants",
-  "University-Specific Scholarships",
-  "Government Funding Programs",
+const benefits = [
+  "Internationally recognized qualifications",
+  "Access to world-class research facilities",
+  "Diverse cultural experiences",
+  "Strong graduate employability",
+  "Excellent student support services",
+  "Opportunities to build global networks",
+  "Post-study work pathways",
+  "Gateway to international career opportunities",
 ];
 
 const supportServices = [
-  { icon: Building, title: "University Selection", desc: "Helping students choose the right academic pathway based on their goals and budget." },
-  { icon: Target, title: "Application Support", desc: "End-to-end assistance with university applications and documentation." },
-  { icon: Award, title: "IELTS & English Prep", desc: "Expert coaching to help students achieve required English language scores." },
-  { icon: Search, title: "Student Visa Guidance", desc: "Professional assistance with Australian student visa applications." },
-  { icon: Award, title: "Scholarship Assistance", desc: "Helping students maximize funding opportunities." },
-  { icon: Plane, title: "Pre-Departure & Post-Arrival", desc: "Comprehensive support before departure and after arrival in Australia." },
+  { icon: Building, title: "University Selection", desc: "Find the right university and course based on your academic background and career goals." },
+  { icon: Target, title: "Application Assistance", desc: "Receive expert support with applications, documentation, and admission requirements." },
+  { icon: Award, title: "IELTS & English Prep", desc: "Improve your English language skills and achieve your target IELTS score." },
+  { icon: Search, title: "Student Visa Guidance", desc: "Get professional support with visa documentation and application processes." },
+  { icon: Award, title: "Scholarship Assistance", desc: "Explore available scholarships and funding opportunities." },
+  { icon: Plane, title: "Pre-Departure & Post-Arrival", desc: "Receive guidance before departure and assistance after arriving in the UK." },
 ];
+
+const expenses = ["Tuition Fees", "Accommodation", "Living Expenses", "Health Surcharge", "Travel Costs", "Study Materials"];
 
 const topUnis = [
-  "The University of Melbourne", "The University of Sydney", "The University of New South Wales (UNSW Sydney)",
-  "Australian National University (ANU)", "Monash University", "The University of Queensland",
-  "The University of Western Australia", "University of Adelaide", "University of Technology Sydney (UTS)", "Macquarie University"
+  "University of Oxford", "University of Cambridge", "Imperial College London", 
+  "University College London (UCL)", "King's College London", "London School of Economics (LSE)",
+  "University of Manchester", "University of Edinburgh", "University of Warwick", "University of Bristol"
 ];
 
-const cities = ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Canberra", "Gold Coast"];
+const cities = ["London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "Leeds", "Liverpool", "Nottingham"];
+const cityLoves = ["Excellent public transport", "Safe and student-friendly communities", "Part-time employment opportunities", "Rich cultural and social experiences", "Diverse international student populations"];
 
-function StudyInAustraliaPage() {
+function StudyInUkPage() {
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Study Destination"
-        title={<>Study in <span className="text-accent">Australia</span></>}
-        subtitle="World-Class Education, Exceptional Lifestyle, Global Career Opportunities."
+        title={<>Study in the <span className="text-accent">United Kingdom</span></>}
+        subtitle="World-Class Education, Global Opportunities, Bright Future."
         image={heroImg}
       />
 
       {/* Intro */}
       <section className="py-20 max-w-4xl mx-auto px-4 text-center">
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-          Australia is one of the most popular destinations for international students, offering high-quality education, globally recognized qualifications, a welcoming multicultural environment, and excellent career prospects. With world-ranked universities, innovative teaching methods, and strong industry connections, Australia provides students with the skills and experience needed to succeed in today's competitive global economy.
+          The United Kingdom remains one of the world's most popular destinations for international students, offering globally recognized qualifications, outstanding academic standards, and excellent career opportunities. Home to some of the world's leading universities, the UK provides a diverse and multicultural environment where students can gain internationally respected degrees and valuable global experience.
         </motion.p>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="mt-6 text-lg text-foreground font-medium">
-          Whether you're planning to pursue undergraduate, postgraduate, vocational, or research programs, Australia offers outstanding opportunities for academic and personal growth.
+          Whether you are looking to pursue undergraduate, postgraduate, foundation, or professional courses, studying in the UK can open doors to academic excellence and long-term career success.
         </motion.p>
       </section>
 
-      {/* Why Study in Australia */}
+      {/* Why Study in the UK */}
       <section className="py-20 lg:py-28 bg-muted/30 border-y border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="space-y-6">
-              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The Aussie Advantage</span>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in Australia?</h2>
+              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The UK Advantage</span>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in the United Kingdom?</h2>
               
               <div className="grid gap-6 mt-8">
                 {whyStudy.map((item, i) => (
@@ -125,13 +123,13 @@ function StudyInAustraliaPage() {
             
             <div className="grid grid-cols-2 gap-4">
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="col-span-2 aspect-video rounded-3xl overflow-hidden shadow-xl">
-                <img src={studentLife1} alt="Australian Student Life" className="w-full h-full object-cover" />
+                <img src={whyStudyImg} alt="UK University" className="w-full h-full object-cover" />
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
-                <img src={studentLife2} alt="Students in Australia" className="w-full h-full object-cover" />
+                <img src={whyStudyImg2} alt="Students in UK" className="w-full h-full object-cover" />
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.2 }} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
-                <img src={studentLife3} alt="Campus Life" className="w-full h-full object-cover" />
+                <img src={studentLifeImg} alt="UK Student Life" className="w-full h-full object-cover" />
               </motion.div>
             </div>
           </div>
@@ -142,7 +140,7 @@ function StudyInAustraliaPage() {
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial="hidden" whileInView="show" viewport={viewportOnce} variants={stagger(0.1)} className="text-center mb-16">
           <motion.span variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Courses</motion.span>
-          <motion.h2 variants={fadeUp} className="mt-3 text-3xl md:text-4xl font-bold">Popular Courses in Australia</motion.h2>
+          <motion.h2 variants={fadeUp} className="mt-3 text-3xl md:text-4xl font-bold">Popular Study Programs</motion.h2>
         </motion.div>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -156,7 +154,7 @@ function StudyInAustraliaPage() {
         </div>
       </section>
 
-      {/* Work & Career */}
+      {/* Benefits & Career */}
       <section className="py-20 lg:py-28 bg-[#0A1628] text-white relative overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
@@ -167,16 +165,13 @@ function StudyInAustraliaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
-              <img src={careerImg} alt="Career Opportunities in Australia" className="w-full h-full object-cover" />
+              <img src={careerImg} alt="Career Opportunities" className="w-full h-full object-cover" />
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce}>
-              <h2 className="text-3xl font-bold mb-6">Work Opportunities for Students</h2>
-              <p className="text-slate-300 leading-relaxed mb-6">
-                International students in Australia may have opportunities to work part-time while studying, helping them gain valuable experience and support living expenses.
-              </p>
+              <h2 className="text-3xl font-bold mb-6">Top Benefits for International Students</h2>
               <div className="grid sm:grid-cols-2 gap-4 mb-10">
-                {workBenefits.map((b, i) => (
+                {benefits.map((b, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
                     <span className="text-sm text-slate-200">{b}</span>
@@ -186,18 +181,19 @@ function StudyInAustraliaPage() {
 
               <h3 className="text-2xl font-bold mb-4">Career Opportunities After Graduation</h3>
               <p className="text-slate-300 leading-relaxed">
-                Australian qualifications are highly valued worldwide. Graduates benefit from strong industry connections, practical skills, and access to opportunities across sectors such as technology, healthcare, engineering, business, finance, and education.
+                A UK qualification can enhance your employability and provide access to career opportunities across the world. Graduates benefit from strong industry connections, practical learning experiences, and internationally recognized credentials valued by employers globally.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Support Services & Scholarships */}
+      {/* Support Services & Costs */}
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-8">Our Australia Study Abroad Services</h2>
+            <h2 className="text-3xl font-bold mb-8">Student Support Services</h2>
+            <p className="text-muted-foreground mb-8">Our experienced advisors assist students throughout every stage of their study abroad journey:</p>
             <div className="grid sm:grid-cols-2 gap-6">
               {supportServices.map((srv, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="flex gap-4">
@@ -214,16 +210,16 @@ function StudyInAustraliaPage() {
           </div>
           
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="bg-muted/30 p-8 rounded-3xl border border-border">
-            <h3 className="text-2xl font-bold mb-4">Scholarships</h3>
-            <p className="text-muted-foreground text-sm mb-6">Many Australian universities offer scholarships to outstanding international students.</p>
-            <h4 className="font-semibold mb-4">Opportunities Include:</h4>
+            <h3 className="text-2xl font-bold mb-4">Cost of Studying</h3>
+            <p className="text-muted-foreground text-sm mb-6">Costs vary depending on the university, course, and location.</p>
+            <h4 className="font-semibold mb-4">Typical Expenses Include:</h4>
             <div className="flex flex-wrap gap-2 mb-6">
-              {scholarships.map(s => (
-                <span key={s} className="px-3 py-1.5 bg-background border border-border rounded-md text-sm font-medium">{s}</span>
+              {expenses.map(e => (
+                <span key={e} className="px-3 py-1.5 bg-background border border-border rounded-md text-sm font-medium">{e}</span>
               ))}
             </div>
             <div className="p-4 bg-accent/10 rounded-xl border border-accent/20">
-              <p className="text-sm font-medium text-foreground">Our advisors help students identify suitable scholarships and prepare competitive applications.</p>
+              <p className="text-sm font-medium text-foreground">Our advisors can help you understand the latest requirements and prepare a realistic study budget.</p>
             </div>
           </motion.div>
         </div>
@@ -234,8 +230,8 @@ function StudyInAustraliaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 mb-16">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce}>
-              <h2 className="text-3xl font-bold mb-4">Top Universities in Australia</h2>
-              <p className="text-muted-foreground mb-6">Australia is home to some of the world's leading universities:</p>
+              <h2 className="text-3xl font-bold mb-4">Top Universities in the UK</h2>
+              <p className="text-muted-foreground mb-6">The UK is home to some of the world's most prestigious universities, known for academic excellence, research innovation, and strong graduate employability.</p>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {topUnis.map((uni, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -244,26 +240,35 @@ function StudyInAustraliaPage() {
                   </div>
                 ))}
               </div>
+              <p className="text-sm text-muted-foreground italic">And many more tailored to your goals!</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="aspect-video rounded-3xl overflow-hidden shadow-lg">
-              <img src={universitiesImg} alt="Australian Universities" className="w-full h-full object-cover" />
+              <img src={universitiesImg} alt="UK Universities" className="w-full h-full object-cover" />
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="aspect-video rounded-3xl overflow-hidden shadow-lg order-2 lg:order-1">
-              <img src={universitiesImg2} alt="Australian Cities" className="w-full h-full object-cover" />
+              <img src={citiesImg} alt="UK Cities" className="w-full h-full object-cover" />
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="order-1 lg:order-2">
-              <h2 className="text-3xl font-bold mb-4">Best Student Cities</h2>
-              <p className="text-muted-foreground mb-6">Australia offers vibrant and student-friendly cities with excellent infrastructure and career opportunities.</p>
+              <h2 className="text-3xl font-bold mb-4">Popular Student Cities</h2>
+              <p className="text-muted-foreground mb-6">Students can choose from vibrant and welcoming cities across the UK:</p>
               <div className="flex flex-wrap gap-2 mb-8">
                 {cities.map((city, i) => (
-                  <span key={i} className="px-4 py-2 bg-background border border-border rounded-full text-sm font-medium flex items-center gap-1 shadow-sm hover:border-accent hover:text-accent transition-colors">
+                  <span key={i} className="px-4 py-2 bg-background border border-border rounded-full text-sm font-medium flex items-center gap-1 shadow-sm">
                     <MapPin className="w-3 h-3 text-accent" /> {city}
                   </span>
                 ))}
               </div>
+              <h4 className="font-semibold mb-3">Why Students Love These Cities:</h4>
+              <ul className="space-y-2">
+                {cityLoves.map((love, i) => (
+                  <li key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-accent shrink-0" /> {love}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </div>
@@ -273,9 +278,9 @@ function StudyInAustraliaPage() {
       <section className="py-20 bg-background text-center px-4">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="max-w-3xl mx-auto">
           <span className="inline-block text-xs uppercase tracking-[0.3em] text-accent font-semibold mb-4">Take the Next Step</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Your Australian Education Journey Today</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Begin Your UK Education Journey Today</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Take the next step toward a world-class education and a successful international career with expert guidance from our study abroad specialists.
+            Take the first step towards achieving your academic and career ambitions with expert guidance from our experienced study abroad consultants.
           </p>
           <a
             href="https://register.findmycareer.org.uk/apply"

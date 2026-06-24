@@ -5,121 +5,108 @@ import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 import {
   GraduationCap, Award, Globe2, Briefcase, HeartPulse, Wrench,
-  Building2, Monitor, LineChart, Cpu, CheckCircle2, ArrowRight,
-  MapPin, Building, Target, Search, Plane, CreditCard
+  Building2, Monitor, LineChart, Utensils, CheckCircle2, ArrowRight,
+  MapPin, Building, Target, Search, Plane
 } from "lucide-react";
 
 // Assets
-import heroImg from "@/assets/Germany/Hero Image.jfif";
-import studentLife1 from "@/assets/Germany/Student Life Image.jfif";
-import studentLife2 from "@/assets/Germany/Student Life Image1.jfif";
-import studentLife3 from "@/assets/Germany/Student Life Image2.jfif";
-import careerImg from "@/assets/Germany/Career Success Image.jfif";
-import universitiesImg from "@/assets/Germany/University Section Image.jfif";
-import universitiesImg2 from "@/assets/Germany/University Section Image1.jfif";
+import heroImg from "@/assets/Australia/Hero Image.jfif";
+import studentLife1 from "@/assets/Australia/Student Life Images.jfif";
+import studentLife2 from "@/assets/Australia/Student Life Images1.jfif";
+import studentLife3 from "@/assets/Australia/Student Life Images2.jfif";
+import careerImg from "@/assets/Australia/Career Success Images.jfif";
+import universitiesImg from "@/assets/Australia/University Section Images.jfif";
+import universitiesImg2 from "@/assets/Australia/University Section Images1.jfif";
 
-export const Route = createFileRoute("/destinations_/germany")({
+export const Route = createFileRoute("/destinations_/study-in-australia")({
   head: () => ({
     meta: [
-      { title: "Study in Germany — Find My Career" },
-      { name: "description", content: "World-Class Education, Affordable Tuition, Global Career Opportunities. Explore top universities and student life in Germany." },
+      { title: "Study in Australia — Find My Career" },
+      { name: "description", content: "World-Class Education, Exceptional Lifestyle, Global Career Opportunities. Explore top universities and student life in Australia." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/germany" }],
+    links: [{ rel: "canonical", href: "/destinations/study-in-australia" }],
   }),
-  component: StudyInGermanyPage,
+  component: StudyInAustraliaPage,
 });
 
 const whyStudy = [
-  { icon: GraduationCap, title: "World-Class Education", desc: "Internationally respected universities known for academic excellence, research innovation, and practical learning." },
-  { icon: CreditCard, title: "Affordable Education", desc: "Many public universities offer low-cost or tuition-free education, making Germany one of the most affordable destinations in Europe." },
-  { icon: Award, title: "Globally Recognized Degrees", desc: "German qualifications are highly valued by employers and academic institutions worldwide." },
-  { icon: Briefcase, title: "Strong Economy & Careers", desc: "Europe's largest economy and a global leader in engineering, automotive tech, IT, and business innovation." },
-  { icon: Globe2, title: "English-Taught Programs", desc: "Thousands of undergraduate and postgraduate programs are available in English, especially at master's level." },
-  { icon: HeartPulse, title: "International Student-Friendly", desc: "Germany welcomes students from across the globe and offers excellent support services for international students." },
+  { icon: Award, title: "Globally Recognized", desc: "Australian degrees are respected and recognized by employers, universities, and professional organizations around the world." },
+  { icon: GraduationCap, title: "World-Class Universities", desc: "Home to several globally ranked universities known for excellence in teaching, research, and innovation." },
+  { icon: Briefcase, title: "Post-Study Work", desc: "Attractive post-study work pathways, allowing eligible graduates to gain valuable international work experience." },
+  { icon: HeartPulse, title: "High Quality of Life", desc: "Consistently ranks among the world's best countries for quality of life, safety, healthcare, and student satisfaction." },
+  { icon: Globe2, title: "Multicultural Environment", desc: "Students from over 190 countries choose Australia each year, creating a diverse international community." },
+  { icon: Wrench, title: "Industry-Focused", desc: "Australian institutions emphasize practical learning, internships, and real-world industry experience." },
 ];
 
 const programs = [
-  { icon: Wrench, title: "Engineering", desc: "Globally renowned for mechanical, automotive, electrical, civil, and industrial engineering programs." },
-  { icon: Monitor, title: "Computer Science & AI", desc: "Study cutting-edge technologies including AI, machine learning, cybersecurity, and software engineering." },
-  { icon: Building2, title: "Business & Management", desc: "Develop leadership, entrepreneurship, finance, and international business skills." },
-  { icon: LineChart, title: "Data Science & IT", desc: "Gain expertise in analytics, cloud computing, software development, and digital transformation." },
-  { icon: Cpu, title: "Automotive Engineering", desc: "Learn from a country known worldwide for automotive innovation and manufacturing excellence." },
-  { icon: HeartPulse, title: "Healthcare & Life Sciences", desc: "Explore advanced programs in biotechnology, healthcare management, and medical sciences." },
+  { icon: Building2, title: "Business & Management", desc: "Develop leadership, entrepreneurship, and strategic management skills." },
+  { icon: Monitor, title: "IT & Cybersecurity", desc: "Study software development, artificial intelligence, data science, and cybersecurity." },
+  { icon: Wrench, title: "Engineering", desc: "Explore civil, mechanical, electrical, mining, and environmental engineering disciplines." },
+  { icon: HeartPulse, title: "Nursing & Healthcare", desc: "Internationally respected healthcare and nursing programs with practical training opportunities." },
+  { icon: LineChart, title: "Accounting & Finance", desc: "Prepare for global careers in banking, finance, auditing, and business consultancy." },
+  { icon: Utensils, title: "Hospitality & Tourism", desc: "Gain industry-focused skills in one of Australia's strongest sectors." },
 ];
 
 const workBenefits = [
-  "Practical industry experience",
+  "Practical work experience",
   "Professional networking opportunities",
-  "Additional financial support",
-  "Improved employability",
-  "Exposure to international work environments",
-];
-
-const whyChooseGermany = [
-  "Affordable education",
-  "Globally recognized qualifications",
-  "Strong economy and career opportunities",
-  "High-quality research facilities",
-  "International learning environment",
-  "Modern infrastructure",
-  "Excellent quality of life",
-  "Gateway to Europe",
+  "Additional income support",
+  "Enhanced employability after graduation",
 ];
 
 const scholarships = [
   "Merit-Based Scholarships",
-  "Academic Excellence Scholarships",
-  "Research Funding Programs",
+  "Academic Excellence Awards",
+  "Research Scholarships",
   "International Student Grants",
   "University-Specific Scholarships",
-  "Government and Foundation Scholarships",
+  "Government Funding Programs",
 ];
 
 const supportServices = [
-  { icon: Building, title: "University Selection", desc: "Helping students choose the right university and course based on academic goals and career aspirations." },
-  { icon: Target, title: "Admission Assistance", desc: "Complete support with university applications and document preparation." },
-  { icon: Award, title: "IELTS & English Guidance", desc: "Support for English language requirements and test preparation." },
-  { icon: Search, title: "Student Visa Assistance", desc: "Professional guidance throughout the German student visa application process." },
-  { icon: Award, title: "Scholarship Support", desc: "Helping students explore funding and scholarship opportunities." },
-  { icon: Plane, title: "Pre-Departure & Post-Arrival", desc: "Comprehensive assistance before departure and after arrival in Germany." },
+  { icon: Building, title: "University Selection", desc: "Helping students choose the right academic pathway based on their goals and budget." },
+  { icon: Target, title: "Application Support", desc: "End-to-end assistance with university applications and documentation." },
+  { icon: Award, title: "IELTS & English Prep", desc: "Expert coaching to help students achieve required English language scores." },
+  { icon: Search, title: "Student Visa Guidance", desc: "Professional assistance with Australian student visa applications." },
+  { icon: Award, title: "Scholarship Assistance", desc: "Helping students maximize funding opportunities." },
+  { icon: Plane, title: "Pre-Departure & Post-Arrival", desc: "Comprehensive support before departure and after arrival in Australia." },
 ];
 
 const topUnis = [
-  "Technical University of Munich (TUM)", "Ludwig Maximilian University of Munich (LMU Munich)",
-  "Heidelberg University", "RWTH Aachen University", "Free University of Berlin",
-  "Humboldt University of Berlin", "Karlsruhe Institute of Technology (KIT)", 
-  "University of Freiburg", "University of Hamburg", "Technical University of Berlin"
+  "The University of Melbourne", "The University of Sydney", "The University of New South Wales (UNSW Sydney)",
+  "Australian National University (ANU)", "Monash University", "The University of Queensland",
+  "The University of Western Australia", "University of Adelaide", "University of Technology Sydney (UTS)", "Macquarie University"
 ];
 
-const cities = ["Berlin", "Munich", "Hamburg", "Frankfurt", "Cologne", "Stuttgart", "Dresden", "Aachen"];
+const cities = ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Canberra", "Gold Coast"];
 
-function StudyInGermanyPage() {
+function StudyInAustraliaPage() {
   return (
     <div className="bg-background">
       <PageHero
         eyebrow="Study Destination"
-        title={<>Study in <span className="text-accent">Germany</span></>}
-        subtitle="World-Class Education, Affordable Tuition, Global Career Opportunities."
+        title={<>Study in <span className="text-accent">Australia</span></>}
+        subtitle="World-Class Education, Exceptional Lifestyle, Global Career Opportunities."
         image={heroImg}
       />
 
       {/* Intro */}
       <section className="py-20 max-w-4xl mx-auto px-4 text-center">
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-          Germany has become one of the most attractive study destinations for international students, offering high-quality education, globally recognized degrees, strong industry connections, and affordable tuition costs. Known for its excellence in engineering, technology, business, and research, Germany provides students with an outstanding opportunity to gain a world-class education while experiencing life in the heart of Europe.
+          Australia is one of the most popular destinations for international students, offering high-quality education, globally recognized qualifications, a welcoming multicultural environment, and excellent career prospects. With world-ranked universities, innovative teaching methods, and strong industry connections, Australia provides students with the skills and experience needed to succeed in today's competitive global economy.
         </motion.p>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="mt-6 text-lg text-foreground font-medium">
-          With hundreds of English-taught programs, modern universities, and a strong economy, Germany continues to attract ambitious students from around the world seeking academic excellence and international career opportunities.
+          Whether you're planning to pursue undergraduate, postgraduate, vocational, or research programs, Australia offers outstanding opportunities for academic and personal growth.
         </motion.p>
       </section>
 
-      {/* Why Study in Germany */}
+      {/* Why Study in Australia */}
       <section className="py-20 lg:py-28 bg-muted/30 border-y border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="space-y-6">
-              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The German Advantage</span>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in Germany?</h2>
+              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The Aussie Advantage</span>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in Australia?</h2>
               
               <div className="grid gap-6 mt-8">
                 {whyStudy.map((item, i) => (
@@ -138,10 +125,10 @@ function StudyInGermanyPage() {
             
             <div className="grid grid-cols-2 gap-4">
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="col-span-2 aspect-video rounded-3xl overflow-hidden shadow-xl">
-                <img src={studentLife1} alt="German Student Life" className="w-full h-full object-cover" />
+                <img src={studentLife1} alt="Australian Student Life" className="w-full h-full object-cover" />
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
-                <img src={studentLife2} alt="Students in Germany" className="w-full h-full object-cover" />
+                <img src={studentLife2} alt="Students in Australia" className="w-full h-full object-cover" />
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.2 }} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
                 <img src={studentLife3} alt="Campus Life" className="w-full h-full object-cover" />
@@ -155,7 +142,7 @@ function StudyInGermanyPage() {
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial="hidden" whileInView="show" viewport={viewportOnce} variants={stagger(0.1)} className="text-center mb-16">
           <motion.span variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Courses</motion.span>
-          <motion.h2 variants={fadeUp} className="mt-3 text-3xl md:text-4xl font-bold">Popular Courses in Germany</motion.h2>
+          <motion.h2 variants={fadeUp} className="mt-3 text-3xl md:text-4xl font-bold">Popular Courses in Australia</motion.h2>
         </motion.div>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -180,13 +167,13 @@ function StudyInGermanyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
-              <img src={careerImg} alt="Career Opportunities in Germany" className="w-full h-full object-cover" />
+              <img src={careerImg} alt="Career Opportunities in Australia" className="w-full h-full object-cover" />
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce}>
-              <h2 className="text-3xl font-bold mb-6">Work Opportunities While Studying</h2>
+              <h2 className="text-3xl font-bold mb-6">Work Opportunities for Students</h2>
               <p className="text-slate-300 leading-relaxed mb-6">
-                Germany provides opportunities for international students to gain valuable work experience while pursuing their studies.
+                International students in Australia may have opportunities to work part-time while studying, helping them gain valuable experience and support living expenses.
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-10">
                 {workBenefits.map((b, i) => (
@@ -199,7 +186,7 @@ function StudyInGermanyPage() {
 
               <h3 className="text-2xl font-bold mb-4">Career Opportunities After Graduation</h3>
               <p className="text-slate-300 leading-relaxed">
-                Germany offers excellent career prospects for graduates in sectors such as Engineering, IT, AI, Manufacturing, Automotive Industry, Healthcare, Finance, and Business Management. Graduates benefit from Germany's strong economy, global corporations, and demand for skilled professionals.
+                Australian qualifications are highly valued worldwide. Graduates benefit from strong industry connections, practical skills, and access to opportunities across sectors such as technology, healthcare, engineering, business, finance, and education.
               </p>
             </motion.div>
           </div>
@@ -210,7 +197,7 @@ function StudyInGermanyPage() {
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-8">Our Germany Study Abroad Services</h2>
+            <h2 className="text-3xl font-bold mb-8">Our Australia Study Abroad Services</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {supportServices.map((srv, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="flex gap-4">
@@ -226,17 +213,17 @@ function StudyInGermanyPage() {
             </div>
           </div>
           
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="bg-muted/30 p-8 rounded-3xl border border-border flex flex-col h-full">
-            <h3 className="text-2xl font-bold mb-4">Scholarships in Germany</h3>
-            <p className="text-muted-foreground text-sm mb-6">Germany offers numerous scholarship opportunities for international students through universities, foundations, and government-supported organizations.</p>
+          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="bg-muted/30 p-8 rounded-3xl border border-border">
+            <h3 className="text-2xl font-bold mb-4">Scholarships</h3>
+            <p className="text-muted-foreground text-sm mb-6">Many Australian universities offer scholarships to outstanding international students.</p>
             <h4 className="font-semibold mb-4">Opportunities Include:</h4>
             <div className="flex flex-wrap gap-2 mb-6">
               {scholarships.map(s => (
                 <span key={s} className="px-3 py-1.5 bg-background border border-border rounded-md text-sm font-medium">{s}</span>
               ))}
             </div>
-            <div className="mt-auto p-4 bg-accent/10 rounded-xl border border-accent/20">
-              <p className="text-sm font-medium text-foreground">Our advisors help students identify suitable funding opportunities and prepare strong scholarship applications.</p>
+            <div className="p-4 bg-accent/10 rounded-xl border border-accent/20">
+              <p className="text-sm font-medium text-foreground">Our advisors help students identify suitable scholarships and prepare competitive applications.</p>
             </div>
           </motion.div>
         </div>
@@ -247,8 +234,8 @@ function StudyInGermanyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 mb-16">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce}>
-              <h2 className="text-3xl font-bold mb-4">Top Universities in Germany</h2>
-              <p className="text-muted-foreground mb-6">Germany is home to some of Europe's most prestigious universities:</p>
+              <h2 className="text-3xl font-bold mb-4">Top Universities in Australia</h2>
+              <p className="text-muted-foreground mb-6">Australia is home to some of the world's leading universities:</p>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {topUnis.map((uni, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -259,31 +246,22 @@ function StudyInGermanyPage() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="aspect-video rounded-3xl overflow-hidden shadow-lg">
-              <img src={universitiesImg} alt="German Universities" className="w-full h-full object-cover" />
+              <img src={universitiesImg} alt="Australian Universities" className="w-full h-full object-cover" />
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="aspect-video rounded-3xl overflow-hidden shadow-lg order-2 lg:order-1">
-              <img src={universitiesImg2} alt="German Cities" className="w-full h-full object-cover" />
+              <img src={universitiesImg2} alt="Australian Cities" className="w-full h-full object-cover" />
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="order-1 lg:order-2">
               <h2 className="text-3xl font-bold mb-4">Best Student Cities</h2>
-              <p className="text-muted-foreground mb-6">Germany offers vibrant student cities with excellent infrastructure, affordable living options, and strong employment opportunities.</p>
+              <p className="text-muted-foreground mb-6">Australia offers vibrant and student-friendly cities with excellent infrastructure and career opportunities.</p>
               <div className="flex flex-wrap gap-2 mb-8">
                 {cities.map((city, i) => (
                   <span key={i} className="px-4 py-2 bg-background border border-border rounded-full text-sm font-medium flex items-center gap-1 shadow-sm hover:border-accent hover:text-accent transition-colors">
                     <MapPin className="w-3 h-3 text-accent" /> {city}
                   </span>
-                ))}
-              </div>
-              
-              <h4 className="font-semibold mb-3">Why Students Choose Germany:</h4>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {whyChooseGermany.map((reason, i) => (
-                  <div key={i} className="flex items-start gap-2 text-muted-foreground text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-accent shrink-0" /> {reason}
-                  </div>
                 ))}
               </div>
             </motion.div>
@@ -295,9 +273,9 @@ function StudyInGermanyPage() {
       <section className="py-20 bg-background text-center px-4">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="max-w-3xl mx-auto">
           <span className="inline-block text-xs uppercase tracking-[0.3em] text-accent font-semibold mb-4">Take the Next Step</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Your German Education Journey Today</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Your Australian Education Journey Today</h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Achieve your academic and career ambitions with expert guidance from our experienced study abroad consultants.
+            Take the next step toward a world-class education and a successful international career with expert guidance from our study abroad specialists.
           </p>
           <a
             href="https://register.findmycareer.org.uk/apply"

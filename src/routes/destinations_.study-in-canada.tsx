@@ -18,13 +18,13 @@ import careerImgAlt from "@/assets/Canada/Career Success Images1.jfif";
 import universitiesImg from "@/assets/Canada/University Section Images.jfif";
 import universitiesImg2 from "@/assets/Canada/University Section Images1.jfif";
 
-export const Route = createFileRoute("/destinations_/canada")({
+export const Route = createFileRoute("/destinations_/study-in-canada")({
   head: () => ({
     meta: [
       { title: "Study in Canada — Find My Career" },
       { name: "description", content: "Quality Education, Diverse Communities, Unlimited Opportunities. Explore top universities and student life in Canada." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/canada" }],
+    links: [{ rel: "canonical", href: "/destinations/study-in-canada" }],
   }),
   component: StudyInCanadaPage,
 });
