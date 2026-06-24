@@ -53,7 +53,7 @@ export function StatsSection() {
           <p className="mt-3 text-slate-300 max-w-2xl mx-auto">Nearly two decades of placing Sri Lankan students into world-class universities.</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {STATS.map((s, i) => {
             const Icon = icons[i];
             return (
@@ -61,7 +61,7 @@ export function StatsSection() {
                 key={s.label}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
-                className="relative rounded-2xl p-6 lg:p-8 bg-white/5 border border-white/10 backdrop-blur-xl hover:border-accent/50 transition-colors"
+                className="relative rounded-2xl p-6 lg:p-8 bg-white/5 border border-white/10 backdrop-blur-xl hover:border-accent/50 transition-colors flex flex-col items-center text-center sm:items-start sm:text-left"
               >
                 <Icon className="w-8 h-8 text-accent mb-4" />
                 <p className="text-4xl lg:text-5xl font-black">

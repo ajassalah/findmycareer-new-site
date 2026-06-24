@@ -5,11 +5,10 @@ import logo from "@/assets/fmc-logo.png";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
 
 const socials = [
-  { icon: Facebook, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Linkedin, href: "#" },
-  { icon: Youtube, href: "#" },
-];
+  { icon: Facebook, href: "https://www.facebook.com/findmycareer.org.uk?_rdc=1&_rdr" },
+  { icon: Instagram, href: "https://www.instagram.com/findmycareer/" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/find-my-career/" },
+  ];
 
 export function Footer() {
   return (
@@ -21,9 +20,7 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div className="bg-white rounded-xl p-3 inline-block">
-              <img src={logo} alt="Find My Career" className="h-12 w-auto" />
-            </div>
+            <img src={logo} alt="Find My Career" className="h-16 w-auto brightness-0 invert" />
             <p className="mt-4 text-sm text-slate-300 leading-relaxed">
               Sri Lanka's most trusted education consultancy — 17+ years guiding students from
               dream to degree across the UK, Australia, Canada, Europe and beyond.
@@ -67,16 +64,16 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-accent">Contact</h4>
             <ul className="space-y-3 text-sm text-slate-300">
-              <li className="flex gap-3"><MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />{SITE.address}</li>
-              <li className="flex gap-3"><Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />{SITE.phone}</li>
-              <li className="flex gap-3"><Mail className="w-4 h-4 text-accent shrink-0 mt-0.5" />{SITE.email}</li>
+              <li className="flex gap-3"><MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href="https://maps.google.com/?q=No.+18+Beltona+Lane+Colombo+04+Sri+Lanka" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{SITE.address}</a></li>
+              <li className="flex gap-3"><Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href={`tel:${SITE.phone}`} className="hover:text-accent transition-colors">{SITE.phone}</a></li>
+              <li className="flex gap-3"><Mail className="w-4 h-4 text-accent shrink-0 mt-0.5" /><a href={`mailto:${SITE.email}`} className="hover:text-accent transition-colors">{SITE.email}</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-3 justify-between items-center text-sm text-slate-400">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-          <p>Made with <span className="text-red-400">❤️</span> for Sri Lankan students</p>
+          <p>Powered by <a href="https://levelweb.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">levelweb.co.uk</a></p>
         </div>
       </div>
     </footer>

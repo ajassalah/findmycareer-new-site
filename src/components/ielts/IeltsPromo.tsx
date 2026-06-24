@@ -40,9 +40,9 @@ export function IeltsPromo() {
               </motion.li>
             ))}
           </motion.ul>
-          <Link to="/ielts-preparation" className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold hover:scale-105 active:scale-95 transition-transform">
+          <a href="https://register.findmycareer.org.uk/apply" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold hover:scale-105 active:scale-95 transition-transform">
             Enroll in IELTS Prep <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </motion.div>
 
         <motion.div

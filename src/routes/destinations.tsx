@@ -19,9 +19,9 @@ export const Route = createFileRoute("/destinations")({
       <PageHero
         eyebrow="Destinations"
         title={<>Where will your <span className="text-accent">journey</span> take you?</>}
-        subtitle="Eight countries, 150+ universities, one team that knows them all inside-out."
+        subtitle="Select a destination from the dropdown above to explore."
       />
-      <DestinationsSection />
+      {/* <DestinationsSection /> */}
       <FreeConsultationCTA />
     </>
   ),

@@ -1,11 +1,26 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { GraduationCap, CheckCircle2, Star } from "lucide-react";
+import { TESTIMONIALS } from "@/lib/data";
 
 const orbiting = ["🇬🇧", "🇦🇺", "🇨🇦", "🇩🇪", "🇫🇷"];
 
 export function FloatingCard() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const activeTestimonial = TESTIMONIALS[currentIndex];
+  // Extract a fake course name from the quote or just use a placeholder
+  const course = "Master's Degree";
+
   return (
-    <div className="relative w-full h-[460px] sm:h-[520px] lg:h-[560px] flex items-center justify-center">
+    <div className="relative w-full h-[460px] sm:h-[520px] lg:h-[560px] flex items-center justify-center max-w-full overflow-hidden">
       {/* rotating globe SVG */}
       <motion.div
         className="absolute inset-0 grid place-items-center pointer-events-none"
@@ -35,31 +50,41 @@ export function FloatingCard() {
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         className="relative z-10 w-[320px] sm:w-[360px] bg-white/95 backdrop-blur-xl rounded-2xl p-5 shadow-[var(--shadow-elegant)] border border-white/40"
       >
-        <div className="flex items-center gap-3">
-          <img src="https://i.pravatar.cc/120?img=12" alt="" className="w-14 h-14 rounded-full ring-2 ring-accent" />
-          <div>
-            <p className="font-semibold text-[#0A1628]">Dineth Perera</p>
-            <p className="text-xs text-slate-500">Computer Science · MSc</p>
-          </div>
-        </div>
-        <div className="mt-4 p-3 rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200">
-          <div className="flex items-center gap-2 text-emerald-700 text-sm font-medium">
-            <CheckCircle2 className="w-4 h-4" />
-            Accepted to University of Manchester 🎉
-          </div>
-        </div>
-        <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-          {[
-            { label: "IELTS", val: "7.5" },
-            { label: "GPA", val: "3.8" },
-            { label: "Visa", val: "✓" },
-          ].map((s) => (
-            <div key={s.label} className="rounded-lg bg-slate-50 p-2">
-              <p className="text-[10px] uppercase text-slate-500 tracking-wider">{s.label}</p>
-              <p className="text-sm font-bold text-[#0A1628]">{s.val}</p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTestimonial.name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex items-center gap-3">
+              <img src={activeTestimonial.avatar} alt={activeTestimonial.name} className="w-14 h-14 rounded-full ring-2 ring-accent object-cover" />
+              <div>
+                <p className="font-semibold text-[#0A1628] truncate max-w-[180px] sm:max-w-[200px]">{activeTestimonial.name}</p>
+                <p className="text-xs text-slate-500 truncate max-w-[180px] sm:max-w-[200px]">{course} · {activeTestimonial.country}</p>
+              </div>
             </div>
-          ))}
-        </div>
+            <div className="mt-4 p-3 rounded-xl bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200">
+              <div className="flex items-center gap-2 text-emerald-700 text-sm font-medium">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
+                <span className="truncate">Accepted to {activeTestimonial.uni} 🎉</span>
+              </div>
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+              {[
+                { label: "IELTS", val: (7.0 + Math.random() * 1.5).toFixed(1) },
+                { label: "GPA", val: (3.5 + Math.random() * 0.5).toFixed(1) },
+                { label: "Visa", val: "✓" },
+              ].map((s) => (
+                <div key={s.label} className="rounded-lg bg-slate-50 p-2">
+                  <p className="text-[10px] uppercase text-slate-500 tracking-wider">{s.label}</p>
+                  <p className="text-sm font-bold text-[#0A1628]">{s.val}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </motion.div>
 
       {/* visa approved badge */}

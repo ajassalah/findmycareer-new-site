@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
 import { IeltsPromo } from "@/components/ielts/IeltsPromo";
+import { IeltsDetails } from "@/components/ielts/IeltsDetails";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 
 export const Route = createFileRoute("/ielts-preparation")({
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/ielts-preparation")({
         subtitle="Examiner-led classes, weekly mock tests and free retake until you reach your target band."
       />
       <IeltsPromo />
+      <IeltsDetails />
       <FreeConsultationCTA />
     </>
   ),

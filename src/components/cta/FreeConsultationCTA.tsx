@@ -44,9 +44,9 @@ export function FreeConsultationCTA() {
           Book a free, no-obligation consultation with our advisors today. Available in English, Sinhala and Tamil.
         </p>
         <div className="mt-8 flex flex-wrap gap-3 justify-center">
-          <Link to="/apply-now" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold shadow-[var(--shadow-glow-gold)] hover:scale-105 transition-transform">
+          <a href="https://register.findmycareer.org.uk/apply" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold shadow-[var(--shadow-glow-gold)] hover:scale-105 transition-transform">
             Apply Now <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
           <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 hover:bg-white hover:text-[#0A1628] font-semibold transition-colors">
             Book Free Consultation
           </Link>

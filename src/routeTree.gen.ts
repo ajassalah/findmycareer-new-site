@@ -9,16 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
+import { Route as VisaAssistanceRouteImport } from './routes/visa-assistance'
+import { Route as UniversityApplicationsRouteImport } from './routes/university-applications'
 import { Route as UniversitiesRouteImport } from './routes/universities'
 import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ScholarshipGuidanceRouteImport } from './routes/scholarship-guidance'
+import { Route as PreDepartureBriefingRouteImport } from './routes/pre-departure-briefing'
+import { Route as PostArrivalSupportRouteImport } from './routes/post-arrival-support'
+import { Route as MissionVisionRouteImport } from './routes/mission-vision'
+import { Route as InnovatorFounderVisaRouteImport } from './routes/innovator-founder-visa'
 import { Route as IeltsPreparationRouteImport } from './routes/ielts-preparation'
 import { Route as DestinationsRouteImport } from './routes/destinations'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ApplyNowRouteImport } from './routes/apply-now'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VisaAssistanceVisaKeyRouteImport } from './routes/visa-assistance_.$visaKey'
+import { Route as DestinationsUsaRouteImport } from './routes/destinations_.usa'
+import { Route as DestinationsUkRouteImport } from './routes/destinations_.uk'
+import { Route as DestinationsNewZealandRouteImport } from './routes/destinations_.new-zealand'
+import { Route as DestinationsIrelandRouteImport } from './routes/destinations_.ireland'
+import { Route as DestinationsGermanyRouteImport } from './routes/destinations_.germany'
+import { Route as DestinationsFranceRouteImport } from './routes/destinations_.france'
+import { Route as DestinationsCanadaRouteImport } from './routes/destinations_.canada'
+import { Route as DestinationsAustraliaRouteImport } from './routes/destinations_.australia'
+import { Route as BlogBlogIdRouteImport } from './routes/blog_.$blogId'
 
+const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
+  id: '/why-choose-us',
+  path: '/why-choose-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisaAssistanceRoute = VisaAssistanceRouteImport.update({
+  id: '/visa-assistance',
+  path: '/visa-assistance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UniversityApplicationsRoute = UniversityApplicationsRouteImport.update({
+  id: '/university-applications',
+  path: '/university-applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UniversitiesRoute = UniversitiesRouteImport.update({
   id: '/universities',
   path: '/universities',
@@ -32,6 +66,31 @@ const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScholarshipGuidanceRoute = ScholarshipGuidanceRouteImport.update({
+  id: '/scholarship-guidance',
+  path: '/scholarship-guidance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreDepartureBriefingRoute = PreDepartureBriefingRouteImport.update({
+  id: '/pre-departure-briefing',
+  path: '/pre-departure-briefing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostArrivalSupportRoute = PostArrivalSupportRouteImport.update({
+  id: '/post-arrival-support',
+  path: '/post-arrival-support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionVisionRoute = MissionVisionRouteImport.update({
+  id: '/mission-vision',
+  path: '/mission-vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InnovatorFounderVisaRoute = InnovatorFounderVisaRouteImport.update({
+  id: '/innovator-founder-visa',
+  path: '/innovator-founder-visa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IeltsPreparationRoute = IeltsPreparationRouteImport.update({
@@ -49,6 +108,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplyNowRoute = ApplyNowRouteImport.update({
   id: '/apply-now',
   path: '/apply-now',
@@ -64,40 +128,147 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VisaAssistanceVisaKeyRoute = VisaAssistanceVisaKeyRouteImport.update({
+  id: '/visa-assistance_/$visaKey',
+  path: '/visa-assistance/$visaKey',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsUsaRoute = DestinationsUsaRouteImport.update({
+  id: '/destinations_/usa',
+  path: '/destinations/usa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsUkRoute = DestinationsUkRouteImport.update({
+  id: '/destinations_/uk',
+  path: '/destinations/uk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsNewZealandRoute = DestinationsNewZealandRouteImport.update({
+  id: '/destinations_/new-zealand',
+  path: '/destinations/new-zealand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsIrelandRoute = DestinationsIrelandRouteImport.update({
+  id: '/destinations_/ireland',
+  path: '/destinations/ireland',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsGermanyRoute = DestinationsGermanyRouteImport.update({
+  id: '/destinations_/germany',
+  path: '/destinations/germany',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsFranceRoute = DestinationsFranceRouteImport.update({
+  id: '/destinations_/france',
+  path: '/destinations/france',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsCanadaRoute = DestinationsCanadaRouteImport.update({
+  id: '/destinations_/canada',
+  path: '/destinations/canada',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsAustraliaRoute = DestinationsAustraliaRouteImport.update({
+  id: '/destinations_/australia',
+  path: '/destinations/australia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogBlogIdRoute = BlogBlogIdRouteImport.update({
+  id: '/blog_/$blogId',
+  path: '/blog/$blogId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/apply-now': typeof ApplyNowRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/ielts-preparation': typeof IeltsPreparationRoute
+  '/innovator-founder-visa': typeof InnovatorFounderVisaRoute
+  '/mission-vision': typeof MissionVisionRoute
+  '/post-arrival-support': typeof PostArrivalSupportRoute
+  '/pre-departure-briefing': typeof PreDepartureBriefingRoute
+  '/scholarship-guidance': typeof ScholarshipGuidanceRoute
   '/services': typeof ServicesRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/universities': typeof UniversitiesRoute
+  '/university-applications': typeof UniversityApplicationsRoute
+  '/visa-assistance': typeof VisaAssistanceRoute
+  '/why-choose-us': typeof WhyChooseUsRoute
+  '/blog/$blogId': typeof BlogBlogIdRoute
+  '/destinations/australia': typeof DestinationsAustraliaRoute
+  '/destinations/canada': typeof DestinationsCanadaRoute
+  '/destinations/france': typeof DestinationsFranceRoute
+  '/destinations/germany': typeof DestinationsGermanyRoute
+  '/destinations/ireland': typeof DestinationsIrelandRoute
+  '/destinations/new-zealand': typeof DestinationsNewZealandRoute
+  '/destinations/uk': typeof DestinationsUkRoute
+  '/destinations/usa': typeof DestinationsUsaRoute
+  '/visa-assistance/$visaKey': typeof VisaAssistanceVisaKeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/apply-now': typeof ApplyNowRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/ielts-preparation': typeof IeltsPreparationRoute
+  '/innovator-founder-visa': typeof InnovatorFounderVisaRoute
+  '/mission-vision': typeof MissionVisionRoute
+  '/post-arrival-support': typeof PostArrivalSupportRoute
+  '/pre-departure-briefing': typeof PreDepartureBriefingRoute
+  '/scholarship-guidance': typeof ScholarshipGuidanceRoute
   '/services': typeof ServicesRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/universities': typeof UniversitiesRoute
+  '/university-applications': typeof UniversityApplicationsRoute
+  '/visa-assistance': typeof VisaAssistanceRoute
+  '/why-choose-us': typeof WhyChooseUsRoute
+  '/blog/$blogId': typeof BlogBlogIdRoute
+  '/destinations/australia': typeof DestinationsAustraliaRoute
+  '/destinations/canada': typeof DestinationsCanadaRoute
+  '/destinations/france': typeof DestinationsFranceRoute
+  '/destinations/germany': typeof DestinationsGermanyRoute
+  '/destinations/ireland': typeof DestinationsIrelandRoute
+  '/destinations/new-zealand': typeof DestinationsNewZealandRoute
+  '/destinations/uk': typeof DestinationsUkRoute
+  '/destinations/usa': typeof DestinationsUsaRoute
+  '/visa-assistance/$visaKey': typeof VisaAssistanceVisaKeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/apply-now': typeof ApplyNowRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/ielts-preparation': typeof IeltsPreparationRoute
+  '/innovator-founder-visa': typeof InnovatorFounderVisaRoute
+  '/mission-vision': typeof MissionVisionRoute
+  '/post-arrival-support': typeof PostArrivalSupportRoute
+  '/pre-departure-briefing': typeof PreDepartureBriefingRoute
+  '/scholarship-guidance': typeof ScholarshipGuidanceRoute
   '/services': typeof ServicesRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/universities': typeof UniversitiesRoute
+  '/university-applications': typeof UniversityApplicationsRoute
+  '/visa-assistance': typeof VisaAssistanceRoute
+  '/why-choose-us': typeof WhyChooseUsRoute
+  '/blog_/$blogId': typeof BlogBlogIdRoute
+  '/destinations_/australia': typeof DestinationsAustraliaRoute
+  '/destinations_/canada': typeof DestinationsCanadaRoute
+  '/destinations_/france': typeof DestinationsFranceRoute
+  '/destinations_/germany': typeof DestinationsGermanyRoute
+  '/destinations_/ireland': typeof DestinationsIrelandRoute
+  '/destinations_/new-zealand': typeof DestinationsNewZealandRoute
+  '/destinations_/uk': typeof DestinationsUkRoute
+  '/destinations_/usa': typeof DestinationsUsaRoute
+  '/visa-assistance_/$visaKey': typeof VisaAssistanceVisaKeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,50 +276,147 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/apply-now'
+    | '/blog'
     | '/contact'
     | '/destinations'
     | '/ielts-preparation'
+    | '/innovator-founder-visa'
+    | '/mission-vision'
+    | '/post-arrival-support'
+    | '/pre-departure-briefing'
+    | '/scholarship-guidance'
     | '/services'
     | '/success-stories'
     | '/universities'
+    | '/university-applications'
+    | '/visa-assistance'
+    | '/why-choose-us'
+    | '/blog/$blogId'
+    | '/destinations/australia'
+    | '/destinations/canada'
+    | '/destinations/france'
+    | '/destinations/germany'
+    | '/destinations/ireland'
+    | '/destinations/new-zealand'
+    | '/destinations/uk'
+    | '/destinations/usa'
+    | '/visa-assistance/$visaKey'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/apply-now'
+    | '/blog'
     | '/contact'
     | '/destinations'
     | '/ielts-preparation'
+    | '/innovator-founder-visa'
+    | '/mission-vision'
+    | '/post-arrival-support'
+    | '/pre-departure-briefing'
+    | '/scholarship-guidance'
     | '/services'
     | '/success-stories'
     | '/universities'
+    | '/university-applications'
+    | '/visa-assistance'
+    | '/why-choose-us'
+    | '/blog/$blogId'
+    | '/destinations/australia'
+    | '/destinations/canada'
+    | '/destinations/france'
+    | '/destinations/germany'
+    | '/destinations/ireland'
+    | '/destinations/new-zealand'
+    | '/destinations/uk'
+    | '/destinations/usa'
+    | '/visa-assistance/$visaKey'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/apply-now'
+    | '/blog'
     | '/contact'
     | '/destinations'
     | '/ielts-preparation'
+    | '/innovator-founder-visa'
+    | '/mission-vision'
+    | '/post-arrival-support'
+    | '/pre-departure-briefing'
+    | '/scholarship-guidance'
     | '/services'
     | '/success-stories'
     | '/universities'
+    | '/university-applications'
+    | '/visa-assistance'
+    | '/why-choose-us'
+    | '/blog_/$blogId'
+    | '/destinations_/australia'
+    | '/destinations_/canada'
+    | '/destinations_/france'
+    | '/destinations_/germany'
+    | '/destinations_/ireland'
+    | '/destinations_/new-zealand'
+    | '/destinations_/uk'
+    | '/destinations_/usa'
+    | '/visa-assistance_/$visaKey'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ApplyNowRoute: typeof ApplyNowRoute
+  BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   DestinationsRoute: typeof DestinationsRoute
   IeltsPreparationRoute: typeof IeltsPreparationRoute
+  InnovatorFounderVisaRoute: typeof InnovatorFounderVisaRoute
+  MissionVisionRoute: typeof MissionVisionRoute
+  PostArrivalSupportRoute: typeof PostArrivalSupportRoute
+  PreDepartureBriefingRoute: typeof PreDepartureBriefingRoute
+  ScholarshipGuidanceRoute: typeof ScholarshipGuidanceRoute
   ServicesRoute: typeof ServicesRoute
   SuccessStoriesRoute: typeof SuccessStoriesRoute
   UniversitiesRoute: typeof UniversitiesRoute
+  UniversityApplicationsRoute: typeof UniversityApplicationsRoute
+  VisaAssistanceRoute: typeof VisaAssistanceRoute
+  WhyChooseUsRoute: typeof WhyChooseUsRoute
+  BlogBlogIdRoute: typeof BlogBlogIdRoute
+  DestinationsAustraliaRoute: typeof DestinationsAustraliaRoute
+  DestinationsCanadaRoute: typeof DestinationsCanadaRoute
+  DestinationsFranceRoute: typeof DestinationsFranceRoute
+  DestinationsGermanyRoute: typeof DestinationsGermanyRoute
+  DestinationsIrelandRoute: typeof DestinationsIrelandRoute
+  DestinationsNewZealandRoute: typeof DestinationsNewZealandRoute
+  DestinationsUkRoute: typeof DestinationsUkRoute
+  DestinationsUsaRoute: typeof DestinationsUsaRoute
+  VisaAssistanceVisaKeyRoute: typeof VisaAssistanceVisaKeyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why-choose-us': {
+      id: '/why-choose-us'
+      path: '/why-choose-us'
+      fullPath: '/why-choose-us'
+      preLoaderRoute: typeof WhyChooseUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visa-assistance': {
+      id: '/visa-assistance'
+      path: '/visa-assistance'
+      fullPath: '/visa-assistance'
+      preLoaderRoute: typeof VisaAssistanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/university-applications': {
+      id: '/university-applications'
+      path: '/university-applications'
+      fullPath: '/university-applications'
+      preLoaderRoute: typeof UniversityApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/universities': {
       id: '/universities'
       path: '/universities'
@@ -168,6 +436,41 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scholarship-guidance': {
+      id: '/scholarship-guidance'
+      path: '/scholarship-guidance'
+      fullPath: '/scholarship-guidance'
+      preLoaderRoute: typeof ScholarshipGuidanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pre-departure-briefing': {
+      id: '/pre-departure-briefing'
+      path: '/pre-departure-briefing'
+      fullPath: '/pre-departure-briefing'
+      preLoaderRoute: typeof PreDepartureBriefingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/post-arrival-support': {
+      id: '/post-arrival-support'
+      path: '/post-arrival-support'
+      fullPath: '/post-arrival-support'
+      preLoaderRoute: typeof PostArrivalSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mission-vision': {
+      id: '/mission-vision'
+      path: '/mission-vision'
+      fullPath: '/mission-vision'
+      preLoaderRoute: typeof MissionVisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/innovator-founder-visa': {
+      id: '/innovator-founder-visa'
+      path: '/innovator-founder-visa'
+      fullPath: '/innovator-founder-visa'
+      preLoaderRoute: typeof InnovatorFounderVisaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ielts-preparation': {
@@ -191,6 +494,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apply-now': {
       id: '/apply-now'
       path: '/apply-now'
@@ -212,6 +522,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visa-assistance_/$visaKey': {
+      id: '/visa-assistance_/$visaKey'
+      path: '/visa-assistance/$visaKey'
+      fullPath: '/visa-assistance/$visaKey'
+      preLoaderRoute: typeof VisaAssistanceVisaKeyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/usa': {
+      id: '/destinations_/usa'
+      path: '/destinations/usa'
+      fullPath: '/destinations/usa'
+      preLoaderRoute: typeof DestinationsUsaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/uk': {
+      id: '/destinations_/uk'
+      path: '/destinations/uk'
+      fullPath: '/destinations/uk'
+      preLoaderRoute: typeof DestinationsUkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/new-zealand': {
+      id: '/destinations_/new-zealand'
+      path: '/destinations/new-zealand'
+      fullPath: '/destinations/new-zealand'
+      preLoaderRoute: typeof DestinationsNewZealandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/ireland': {
+      id: '/destinations_/ireland'
+      path: '/destinations/ireland'
+      fullPath: '/destinations/ireland'
+      preLoaderRoute: typeof DestinationsIrelandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/germany': {
+      id: '/destinations_/germany'
+      path: '/destinations/germany'
+      fullPath: '/destinations/germany'
+      preLoaderRoute: typeof DestinationsGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/france': {
+      id: '/destinations_/france'
+      path: '/destinations/france'
+      fullPath: '/destinations/france'
+      preLoaderRoute: typeof DestinationsFranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/canada': {
+      id: '/destinations_/canada'
+      path: '/destinations/canada'
+      fullPath: '/destinations/canada'
+      preLoaderRoute: typeof DestinationsCanadaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations_/australia': {
+      id: '/destinations_/australia'
+      path: '/destinations/australia'
+      fullPath: '/destinations/australia'
+      preLoaderRoute: typeof DestinationsAustraliaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog_/$blogId': {
+      id: '/blog_/$blogId'
+      path: '/blog/$blogId'
+      fullPath: '/blog/$blogId'
+      preLoaderRoute: typeof BlogBlogIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -219,13 +599,42 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ApplyNowRoute: ApplyNowRoute,
+  BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   DestinationsRoute: DestinationsRoute,
   IeltsPreparationRoute: IeltsPreparationRoute,
+  InnovatorFounderVisaRoute: InnovatorFounderVisaRoute,
+  MissionVisionRoute: MissionVisionRoute,
+  PostArrivalSupportRoute: PostArrivalSupportRoute,
+  PreDepartureBriefingRoute: PreDepartureBriefingRoute,
+  ScholarshipGuidanceRoute: ScholarshipGuidanceRoute,
   ServicesRoute: ServicesRoute,
   SuccessStoriesRoute: SuccessStoriesRoute,
   UniversitiesRoute: UniversitiesRoute,
+  UniversityApplicationsRoute: UniversityApplicationsRoute,
+  VisaAssistanceRoute: VisaAssistanceRoute,
+  WhyChooseUsRoute: WhyChooseUsRoute,
+  BlogBlogIdRoute: BlogBlogIdRoute,
+  DestinationsAustraliaRoute: DestinationsAustraliaRoute,
+  DestinationsCanadaRoute: DestinationsCanadaRoute,
+  DestinationsFranceRoute: DestinationsFranceRoute,
+  DestinationsGermanyRoute: DestinationsGermanyRoute,
+  DestinationsIrelandRoute: DestinationsIrelandRoute,
+  DestinationsNewZealandRoute: DestinationsNewZealandRoute,
+  DestinationsUkRoute: DestinationsUkRoute,
+  DestinationsUsaRoute: DestinationsUsaRoute,
+  VisaAssistanceVisaKeyRoute: VisaAssistanceVisaKeyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

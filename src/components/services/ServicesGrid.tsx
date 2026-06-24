@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { SERVICES } from "@/lib/data";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
@@ -34,9 +35,9 @@ export function ServicesGrid() {
               </motion.div>
               <h3 className="relative text-xl font-semibold text-foreground">{s.title}</h3>
               <p className="relative mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-              <a href="/services" className="relative mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent">
+              <Link to={s.to} className="relative mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent">
                 Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
@@ -44,3 +45,4 @@ export function ServicesGrid() {
     </section>
   );
 }
+
