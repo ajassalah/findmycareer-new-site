@@ -24,6 +24,7 @@ import { Route as InnovatorFounderVisaRouteImport } from './routes/innovator-fou
 import { Route as IeltsPreparationRouteImport } from './routes/ielts-preparation'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ApplyNowRouteImport } from './routes/apply-now'
 import { Route as AboutRouteImport } from './routes/about'
@@ -114,6 +115,11 @@ const DestinationsRoute = DestinationsRouteImport.update({
   path: '/destinations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -196,6 +202,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/apply-now': typeof ApplyNowRoute
   '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/faq': typeof FaqRoute
   '/ielts-preparation': typeof IeltsPreparationRoute
@@ -227,6 +234,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/apply-now': typeof ApplyNowRoute
   '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/faq': typeof FaqRoute
   '/ielts-preparation': typeof IeltsPreparationRoute
@@ -259,6 +267,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/apply-now': typeof ApplyNowRoute
   '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/destinations': typeof DestinationsRoute
   '/faq': typeof FaqRoute
   '/ielts-preparation': typeof IeltsPreparationRoute
@@ -292,6 +301,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/apply-now'
     | '/blog'
+    | '/contact'
     | '/destinations'
     | '/faq'
     | '/ielts-preparation'
@@ -323,6 +333,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/apply-now'
     | '/blog'
+    | '/contact'
     | '/destinations'
     | '/faq'
     | '/ielts-preparation'
@@ -354,6 +365,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/apply-now'
     | '/blog'
+    | '/contact'
     | '/destinations'
     | '/faq'
     | '/ielts-preparation'
@@ -386,6 +398,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ApplyNowRoute: typeof ApplyNowRoute
   BlogRoute: typeof BlogRoute
+  ContactRoute: typeof ContactRoute
   DestinationsRoute: typeof DestinationsRoute
   FaqRoute: typeof FaqRoute
   IeltsPreparationRoute: typeof IeltsPreparationRoute
@@ -520,6 +533,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DestinationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -626,6 +646,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ApplyNowRoute: ApplyNowRoute,
   BlogRoute: BlogRoute,
+  ContactRoute: ContactRoute,
   DestinationsRoute: DestinationsRoute,
   FaqRoute: FaqRoute,
   IeltsPreparationRoute: IeltsPreparationRoute,
