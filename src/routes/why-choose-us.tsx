@@ -88,6 +88,8 @@ const differentiators = [
 ];
 
 function WhyChooseUs() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <>
       <PageHero
