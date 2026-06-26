@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
@@ -282,6 +282,12 @@ const visaTypes = [
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 function VisaAssistancePage() {
+  const shouldReduceMotion = useReducedMotion();
+  const motionProps = (delay = 0, axis = "y", distance = 30) =>
+    shouldReduceMotion
+      ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: viewportOnce, transition: { duration: 0.3, delay } }
+      : { initial: { opacity: 0, [axis]: distance }, whileInView: { opacity: 1, [axis]: 0 }, viewport: viewportOnce, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay } };
+
   return (
     <div className="flex flex-col min-h-screen">
       <PageHero
@@ -350,7 +356,7 @@ function VisaAssistancePage() {
                 {processSteps.map((step, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center group">
                     <div className="w-10 h-10 rounded-full bg-[#C8102E] text-white font-bold flex items-center justify-center text-sm shadow-md mb-6 z-10 ring-4 ring-background group-hover:scale-110 transition-transform">{i + 1}</div>
-                    <div className="w-full bg-background/50 backdrop-blur-sm border border-border rounded-xl p-5 flex flex-col items-center text-center shadow-sm group-hover:shadow-md group-hover:border-accent/60 transition-all duration-300 relative overflow-hidden group-hover:-translate-y-1">
+                    <div whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 12px 32px rgba(0,0,0,0.10)" }} className="w-full bg-background/50 backdrop-blur-sm border border-border rounded-xl p-5 flex flex-col items-center text-center shadow-sm group-hover:shadow-md group-hover:border-accent/60 transition-all duration-300 relative overflow-hidden group-hover:-translate-y-1">
                       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <div className="w-14 h-14 rounded-full bg-[#0A1628] flex items-center justify-center text-white mb-4 shadow-lg z-10"><step.icon className="w-6 h-6" strokeWidth={1.5} /></div>
                       <h4 className="text-sm font-bold text-foreground leading-snug z-10 mb-2">{step.title}</h4>

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
@@ -18,13 +18,13 @@ import careerImgAlt from "@/assets/Canada/Career Success Images1.jfif";
 import universitiesImg from "@/assets/Canada/University Section Images.jfif";
 import universitiesImg2 from "@/assets/Canada/University Section Images1.jfif";
 
-export const Route = createFileRoute("/destinations_/study-in-canada")({
+export const Route = createFileRoute("/study-in-canada")({
   head: () => ({
     meta: [
       { title: "Study in Canada — Find My Career" },
       { name: "description", content: "Quality Education, Diverse Communities, Unlimited Opportunities. Explore top universities and student life in Canada." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/study-in-canada" }],
+    links: [{ rel: "canonical", href: "/study-in-canada" }],
   }),
   component: StudyInCanadaPage,
 });
@@ -93,6 +93,13 @@ const topUnis = [
 const cities = ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa", "Edmonton", "Winnipeg"];
 
 function StudyInCanadaPage() {
+
+  const shouldReduceMotion = useReducedMotion();
+  const motionProps = (delay = 0, axis = "y", distance = 30) =>
+    shouldReduceMotion
+      ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: viewportOnce, transition: { duration: 0.3, delay } }
+      : { initial: { opacity: 0, [axis]: distance }, whileInView: { opacity: 1, [axis]: 0 }, viewport: viewportOnce, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay } };
+
   return (
     <div className="bg-background">
       <PageHero
@@ -104,10 +111,10 @@ function StudyInCanadaPage() {
 
       {/* Intro */}
       <section className="py-20 max-w-4xl mx-auto px-4 text-center">
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+        <motion.p {...motionProps()} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
           Canada continues to be one of the world's most attractive destinations for international students, offering internationally recognized qualifications, high academic standards, a welcoming multicultural environment, and excellent career opportunities. Known for its safety, quality of life, and student-friendly policies, Canada provides an ideal environment for students seeking a world-class education and a successful future.
         </motion.p>
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="mt-6 text-lg text-foreground font-medium">
+        <motion.p {...motionProps(0.1)} className="mt-6 text-lg text-foreground font-medium">
           Whether you're planning to pursue undergraduate, postgraduate, diploma, certificate, or research programs, Canada offers a wide range of academic pathways tailored to diverse career goals.
         </motion.p>
       </section>
@@ -116,13 +123,13 @@ function StudyInCanadaPage() {
       <section className="py-20 lg:py-28 bg-muted/30 border-y border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="space-y-6">
+            <motion.div {...motionProps(0, "x", -30)} className="space-y-6">
               <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The Canadian Advantage</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in Canada?</h2>
               
               <div className="grid gap-6 mt-8">
                 {whyStudy.map((item, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="flex gap-4">
+                  <motion.div key={i} {...motionProps(i * 0.1, "y", 10)} whileHover={shouldReduceMotion ? undefined : { y: -3 }} className="flex gap-4 group">
                     <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 text-accent">
                       <item.icon className="w-6 h-6" />
                     </div>
@@ -136,13 +143,13 @@ function StudyInCanadaPage() {
             </motion.div>
             
             <div className="grid grid-cols-2 gap-4">
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="col-span-2 aspect-video rounded-3xl overflow-hidden shadow-xl">
+              <motion.div {...motionProps(0, "y", 30)} className="col-span-2 aspect-video rounded-3xl overflow-hidden shadow-xl">
                 <img src={studentLife1} alt="Canadian Student Life" className="w-full h-full object-cover" />
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
+              <motion.div {...motionProps(0.1, "y", 30)} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
                 <img src={studentLife2} alt="Students in Canada" className="w-full h-full object-cover" />
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.2 }} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
+              <motion.div {...motionProps(0.2, "y", 30)} className="aspect-square rounded-3xl overflow-hidden shadow-lg">
                 <img src={careerImgAlt} alt="Campus Life" className="w-full h-full object-cover" />
               </motion.div>
             </div>
@@ -159,7 +166,7 @@ function StudyInCanadaPage() {
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((prog, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="bg-background border border-border p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all group">
+            <motion.div key={i} {...motionProps(i * 0.1)} whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 12px 32px rgba(0,0,0,0.10)" }} className="bg-background border border-border p-8 rounded-2xl shadow-sm hover:border-accent/30 transition-all duration-300 group">
               <prog.icon className="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold mb-2">{prog.title}</h3>
               <p className="text-muted-foreground text-sm">{prog.desc}</p>
@@ -178,11 +185,11 @@ function StudyInCanadaPage() {
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="rounded-3xl overflow-hidden shadow-2xl">
+            <motion.div initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} transition={shouldReduceMotion ? { duration: 0.3 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }} className="rounded-3xl overflow-hidden shadow-2xl">
               <img src={careerImg} alt="Career Opportunities in Canada" className="w-full h-auto object-cover" />
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce}>
+            <motion.div {...motionProps(0, "x", 30)}>
               <h2 className="text-3xl font-bold mb-6">Work Opportunities for Students</h2>
               <p className="text-slate-300 leading-relaxed mb-6">
                 International students may be eligible to work while studying, allowing them to gain practical experience and support their living expenses.
@@ -212,7 +219,7 @@ function StudyInCanadaPage() {
             <h2 className="text-3xl font-bold mb-8">Our Canada Study Abroad Services</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {supportServices.map((srv, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="flex gap-4">
+                <motion.div key={i} {...motionProps(i * 0.1, "y", 10)} whileHover={shouldReduceMotion ? undefined : { y: -3 }} className="flex gap-4 group">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <srv.icon className="w-5 h-5 text-accent" />
                   </div>
@@ -225,7 +232,7 @@ function StudyInCanadaPage() {
             </div>
           </div>
           
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="bg-muted/30 p-8 rounded-3xl border border-border flex flex-col h-full">
+          <motion.div {...motionProps(0, "x", 30)} className="bg-muted/30 p-8 rounded-3xl border border-border flex flex-col h-full">
             <h3 className="text-2xl font-bold mb-4">Scholarships in Canada</h3>
             <p className="text-muted-foreground text-sm mb-6">Many Canadian universities and institutions offer scholarships and financial assistance to international students.</p>
             <h4 className="font-semibold mb-4">Available Types:</h4>
@@ -245,7 +252,7 @@ function StudyInCanadaPage() {
       <section className="py-20 lg:py-28 bg-muted/20 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 mb-16">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce}>
+            <motion.div {...motionProps(0, "x", -30)}>
               <h2 className="text-3xl font-bold mb-4">Top Universities in Canada</h2>
               <p className="text-muted-foreground mb-6">Canada is home to some of the world's most respected universities:</p>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
@@ -257,16 +264,16 @@ function StudyInCanadaPage() {
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="aspect-video rounded-3xl overflow-hidden shadow-lg">
+            <motion.div initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} transition={shouldReduceMotion ? { duration: 0.3 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }} className="aspect-video rounded-3xl overflow-hidden shadow-lg">
               <img src={universitiesImg} alt="Canadian Universities" className="w-full h-full object-cover" />
             </motion.div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} className="aspect-video rounded-3xl overflow-hidden shadow-lg order-2 lg:order-1">
+            <motion.div initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={viewportOnce} transition={shouldReduceMotion ? { duration: 0.3 } : { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }} className="aspect-video rounded-3xl overflow-hidden shadow-lg order-2 lg:order-1">
               <img src={universitiesImg2} alt="Canadian Cities" className="w-full h-full object-cover" />
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="order-1 lg:order-2">
+            <motion.div {...motionProps(0, "x", 30)} className="order-1 lg:order-2">
               <h2 className="text-3xl font-bold mb-4">Best Student Cities</h2>
               <p className="text-muted-foreground mb-6">Canada offers vibrant cities that combine academic excellence with outstanding quality of life.</p>
               <div className="flex flex-wrap gap-2 mb-8">
@@ -292,7 +299,7 @@ function StudyInCanadaPage() {
 
       {/* Footer CTA */}
       <section className="py-20 bg-background text-center px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="max-w-3xl mx-auto">
+        <motion.div {...motionProps()} className="max-w-3xl mx-auto">
           <span className="inline-block text-xs uppercase tracking-[0.3em] text-accent font-semibold mb-4">Take the Next Step</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Start Your Canadian Education Journey Today</h2>
           <p className="text-lg text-muted-foreground mb-8">
@@ -311,3 +318,4 @@ function StudyInCanadaPage() {
     </div>
   );
 }
+

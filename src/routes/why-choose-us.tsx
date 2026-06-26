@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { StatsSection } from "@/components/stats/StatsSection";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
@@ -117,7 +117,7 @@ function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07 }}
-                className="group relative bg-background border border-border rounded-2xl p-8 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                whileHover={shouldReduceMotion ? undefined : { y: -8, boxShadow: "0 16px 40px rgba(0,0,0,0.12)" }} className="group relative bg-background border border-border rounded-2xl p-8 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 {/* hover gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />

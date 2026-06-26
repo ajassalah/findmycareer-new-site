@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
@@ -37,6 +37,12 @@ const visionPillars = [
 ];
 
 function MissionVisionPage() {
+  const shouldReduceMotion = useReducedMotion();
+  const motionProps = (delay = 0, axis = "y", distance = 30) =>
+    shouldReduceMotion
+      ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: viewportOnce, transition: { duration: 0.3, delay } }
+      : { initial: { opacity: 0, [axis]: distance }, whileInView: { opacity: 1, [axis]: 0 }, viewport: viewportOnce, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay } };
+
   return (
     <div className="flex flex-col min-h-screen">
       <PageHero
@@ -59,10 +65,7 @@ function MissionVisionPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Text */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              {...motionProps(0, "x", -40)}
               className="space-y-8"
             >
               {/* Label */}
@@ -86,11 +89,8 @@ function MissionVisionPage() {
                 {missionValues.map((val, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="group flex items-start gap-3 p-4 rounded-xl border border-border bg-muted/30 hover:bg-background hover:border-[#C8102E]/30 hover:shadow-md transition-all duration-300"
+                    {...motionProps(i * 0.1 , "y", 16)}
+                    whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 12px 32px rgba(0,0,0,0.10)" }} className="group flex items-start gap-3 p-4 rounded-xl border border-border bg-muted/30 hover:bg-background hover:border-[#C8102E]/30 hover:shadow-md transition-all duration-300"
                   >
                     <div className="w-9 h-9 rounded-lg bg-[#C8102E]/10 flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 transition-transform">
                       <val.icon className="w-4 h-4 text-[#C8102E]" />
@@ -109,7 +109,7 @@ function MissionVisionPage() {
               initial={{ opacity: 0, scale: 0.9, x: 40 }}
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
               className="relative"
             >
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
@@ -176,7 +176,7 @@ function MissionVisionPage() {
               initial={{ opacity: 0, scale: 0.9, x: -40 }}
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
               className="relative order-2 lg:order-1"
             >
               <div className="grid grid-cols-2 gap-3">
@@ -200,10 +200,7 @@ function MissionVisionPage() {
 
             {/* Text */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              {...motionProps(0, "x", 40)}
               className="space-y-8 order-1 lg:order-2"
             >
               <div className="flex items-center gap-3">
@@ -230,11 +227,8 @@ function MissionVisionPage() {
                 {visionPillars.map((pillar, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="group flex items-start gap-3 p-4 rounded-xl border border-border bg-muted/30 hover:bg-background hover:border-accent/30 hover:shadow-md transition-all duration-300"
+                    {...motionProps(i * 0.1 , "y", 16)}
+                    whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 12px 32px rgba(0,0,0,0.10)" }} className="group flex items-start gap-3 p-4 rounded-xl border border-border bg-muted/30 hover:bg-background hover:border-accent/30 hover:shadow-md transition-all duration-300"
                   >
                     <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 transition-transform">
                       <pillar.icon className="w-4 h-4 text-accent" />

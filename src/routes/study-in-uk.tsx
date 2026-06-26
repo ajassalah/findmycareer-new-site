@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
@@ -18,13 +18,13 @@ import universitiesImg from "@/assets/uk/UK Universities.jfif";
 import citiesImg from "@/assets/uk/UK Cities & Student Experience.jfif";
 import studentLifeImg from "@/assets/uk/Student Life in the UK.jfif";
 
-export const Route = createFileRoute("/destinations_/study-in-uk")({
+export const Route = createFileRoute("/study-in-uk")({
   head: () => ({
     meta: [
       { title: "Study in the UK — Find My Career" },
       { name: "description", content: "World-Class Education, Global Opportunities, Bright Future. Explore top universities, costs, and student life in the United Kingdom." },
     ],
-    links: [{ rel: "canonical", href: "/destinations/study-in-uk" }],
+    links: [{ rel: "canonical", href: "/study-in-uk" }],
   }),
   component: StudyInUkPage,
 });
@@ -79,6 +79,12 @@ const cities = ["London", "Manchester", "Birmingham", "Edinburgh", "Glasgow", "L
 const cityLoves = ["Excellent public transport", "Safe and student-friendly communities", "Part-time employment opportunities", "Rich cultural and social experiences", "Diverse international student populations"];
 
 function StudyInUkPage() {
+  const shouldReduceMotion = useReducedMotion();
+  const motionProps = (delay = 0, axis: "y" | "x" = "y", distance = 30) =>
+    shouldReduceMotion
+      ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: viewportOnce, transition: { duration: 0.3, delay } }
+      : { initial: { opacity: 0, [axis]: distance }, whileInView: { opacity: 1, [axis]: 0 }, viewport: viewportOnce, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay } };
+
   return (
     <div className="bg-background">
       <PageHero
@@ -90,10 +96,10 @@ function StudyInUkPage() {
 
       {/* Intro */}
       <section className="py-20 max-w-4xl mx-auto px-4 text-center">
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+        <motion.p {...motionProps()} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
           The United Kingdom remains one of the world's most popular destinations for international students, offering globally recognized qualifications, outstanding academic standards, and excellent career opportunities. Home to some of the world's leading universities, the UK provides a diverse and multicultural environment where students can gain internationally respected degrees and valuable global experience.
         </motion.p>
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: 0.1 }} className="mt-6 text-lg text-foreground font-medium">
+        <motion.p {...motionProps(0.1)} className="mt-6 text-lg text-foreground font-medium">
           Whether you are looking to pursue undergraduate, postgraduate, foundation, or professional courses, studying in the UK can open doors to academic excellence and long-term career success.
         </motion.p>
       </section>
@@ -102,7 +108,7 @@ function StudyInUkPage() {
       <section className="py-20 lg:py-28 bg-muted/30 border-y border-border relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="space-y-6">
+            <motion.div {...motionProps(0, "x", -30)} className="space-y-6">
               <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">The UK Advantage</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Why Study in the United Kingdom?</h2>
               
@@ -145,7 +151,12 @@ function StudyInUkPage() {
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((prog, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="bg-background border border-border p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all group">
+            <motion.div
+              key={i}
+              {...motionProps(i * 0.08, "y", 20)}
+              whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 12px 32px rgba(0,0,0,0.10)" }}
+              className="bg-background border border-border p-8 rounded-2xl shadow-sm hover:border-accent/30 transition-all duration-300 group"
+            >
               <prog.icon className="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform" />
               <h3 className="text-xl font-bold mb-2">{prog.title}</h3>
               <p className="text-muted-foreground text-sm">{prog.desc}</p>
@@ -196,7 +207,7 @@ function StudyInUkPage() {
             <p className="text-muted-foreground mb-8">Our experienced advisors assist students throughout every stage of their study abroad journey:</p>
             <div className="grid sm:grid-cols-2 gap-6">
               {supportServices.map((srv, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={viewportOnce} transition={{ delay: i * 0.1 }} className="flex gap-4">
+                <motion.div key={i} {...motionProps(i * 0.08, "y", 10)} whileHover={shouldReduceMotion ? undefined : { y: -3 }} className="flex gap-4 group">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <srv.icon className="w-5 h-5 text-accent" />
                   </div>
@@ -209,7 +220,7 @@ function StudyInUkPage() {
             </div>
           </div>
           
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={viewportOnce} className="bg-muted/30 p-8 rounded-3xl border border-border">
+          <motion.div {...motionProps(0, "x", 30)} className="bg-muted/30 p-8 rounded-3xl border border-border hover:border-accent/20 transition-colors">
             <h3 className="text-2xl font-bold mb-4">Cost of Studying</h3>
             <p className="text-muted-foreground text-sm mb-6">Costs vary depending on the university, course, and location.</p>
             <h4 className="font-semibold mb-4">Typical Expenses Include:</h4>

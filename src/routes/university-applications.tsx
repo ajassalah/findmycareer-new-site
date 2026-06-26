@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, GraduationCap, Building2, FileText, Send, Award, Calendar, Check, Search, FileSignature } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
@@ -14,6 +14,12 @@ export const Route = createFileRoute("/university-applications")({
 });
 
 function UniversityApplicationsPage() {
+  const shouldReduceMotion = useReducedMotion();
+  const motionProps = (delay = 0, axis = "y", distance = 30) =>
+    shouldReduceMotion
+      ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: viewportOnce, transition: { duration: 0.3, delay } }
+      : { initial: { opacity: 0, [axis]: distance }, whileInView: { opacity: 1, [axis]: 0 }, viewport: viewportOnce, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay } };
+
   return (
     <div className="flex flex-col min-h-screen">
       <PageHero
@@ -107,7 +113,7 @@ function UniversityApplicationsPage() {
                     </div>
                     
                     {/* Card Container */}
-                    <div className="w-full h-full bg-background/50 backdrop-blur-sm border border-border rounded-xl p-5 flex flex-col items-center text-center shadow-sm group-hover:shadow-md group-hover:border-accent/60 transition-all duration-300 relative overflow-hidden group-hover:-translate-y-1">
+                    <div whileHover={shouldReduceMotion ? undefined : { y: -6, boxShadow: "0 12px 32px rgba(0,0,0,0.10)" }} className="w-full h-full bg-background/50 backdrop-blur-sm border border-border rounded-xl p-5 flex flex-col items-center text-center shadow-sm group-hover:shadow-md group-hover:border-accent/60 transition-all duration-300 relative overflow-hidden group-hover:-translate-y-1">
                       {/* Inner glowing accent effect */}
                       <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       

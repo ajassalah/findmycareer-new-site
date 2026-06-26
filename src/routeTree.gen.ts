@@ -14,6 +14,14 @@ import { Route as VisaAssistanceRouteImport } from './routes/visa-assistance'
 import { Route as UniversityApplicationsRouteImport } from './routes/university-applications'
 import { Route as UniversitiesRouteImport } from './routes/universities'
 import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
+import { Route as StudyInUsaRouteImport } from './routes/study-in-usa'
+import { Route as StudyInUkRouteImport } from './routes/study-in-uk'
+import { Route as StudyInNewZealandRouteImport } from './routes/study-in-new-zealand'
+import { Route as StudyInIrelandRouteImport } from './routes/study-in-ireland'
+import { Route as StudyInGermanyRouteImport } from './routes/study-in-germany'
+import { Route as StudyInFranceRouteImport } from './routes/study-in-france'
+import { Route as StudyInCanadaRouteImport } from './routes/study-in-canada'
+import { Route as StudyInAustraliaRouteImport } from './routes/study-in-australia'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ScholarshipGuidanceRouteImport } from './routes/scholarship-guidance'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -30,14 +38,6 @@ import { Route as ApplyNowRouteImport } from './routes/apply-now'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VisaAssistanceVisaKeyRouteImport } from './routes/visa-assistance_.$visaKey'
-import { Route as DestinationsStudyInUsaRouteImport } from './routes/destinations_.study-in-usa'
-import { Route as DestinationsStudyInUkRouteImport } from './routes/destinations_.study-in-uk'
-import { Route as DestinationsStudyInNewZealandRouteImport } from './routes/destinations_.study-in-new-zealand'
-import { Route as DestinationsStudyInIrelandRouteImport } from './routes/destinations_.study-in-ireland'
-import { Route as DestinationsStudyInGermanyRouteImport } from './routes/destinations_.study-in-germany'
-import { Route as DestinationsStudyInFranceRouteImport } from './routes/destinations_.study-in-france'
-import { Route as DestinationsStudyInCanadaRouteImport } from './routes/destinations_.study-in-canada'
-import { Route as DestinationsStudyInAustraliaRouteImport } from './routes/destinations_.study-in-australia'
 import { Route as BlogBlogIdRouteImport } from './routes/blog_.$blogId'
 
 const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
@@ -63,6 +63,46 @@ const UniversitiesRoute = UniversitiesRouteImport.update({
 const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
   id: '/success-stories',
   path: '/success-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInUsaRoute = StudyInUsaRouteImport.update({
+  id: '/study-in-usa',
+  path: '/study-in-usa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInUkRoute = StudyInUkRouteImport.update({
+  id: '/study-in-uk',
+  path: '/study-in-uk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInNewZealandRoute = StudyInNewZealandRouteImport.update({
+  id: '/study-in-new-zealand',
+  path: '/study-in-new-zealand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInIrelandRoute = StudyInIrelandRouteImport.update({
+  id: '/study-in-ireland',
+  path: '/study-in-ireland',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInGermanyRoute = StudyInGermanyRouteImport.update({
+  id: '/study-in-germany',
+  path: '/study-in-germany',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInFranceRoute = StudyInFranceRouteImport.update({
+  id: '/study-in-france',
+  path: '/study-in-france',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInCanadaRoute = StudyInCanadaRouteImport.update({
+  id: '/study-in-canada',
+  path: '/study-in-canada',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInAustraliaRoute = StudyInAustraliaRouteImport.update({
+  id: '/study-in-australia',
+  path: '/study-in-australia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -145,52 +185,6 @@ const VisaAssistanceVisaKeyRoute = VisaAssistanceVisaKeyRouteImport.update({
   path: '/visa-assistance/$visaKey',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DestinationsStudyInUsaRoute = DestinationsStudyInUsaRouteImport.update({
-  id: '/destinations_/study-in-usa',
-  path: '/destinations/study-in-usa',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DestinationsStudyInUkRoute = DestinationsStudyInUkRouteImport.update({
-  id: '/destinations_/study-in-uk',
-  path: '/destinations/study-in-uk',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DestinationsStudyInNewZealandRoute =
-  DestinationsStudyInNewZealandRouteImport.update({
-    id: '/destinations_/study-in-new-zealand',
-    path: '/destinations/study-in-new-zealand',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DestinationsStudyInIrelandRoute =
-  DestinationsStudyInIrelandRouteImport.update({
-    id: '/destinations_/study-in-ireland',
-    path: '/destinations/study-in-ireland',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DestinationsStudyInGermanyRoute =
-  DestinationsStudyInGermanyRouteImport.update({
-    id: '/destinations_/study-in-germany',
-    path: '/destinations/study-in-germany',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DestinationsStudyInFranceRoute =
-  DestinationsStudyInFranceRouteImport.update({
-    id: '/destinations_/study-in-france',
-    path: '/destinations/study-in-france',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DestinationsStudyInCanadaRoute =
-  DestinationsStudyInCanadaRouteImport.update({
-    id: '/destinations_/study-in-canada',
-    path: '/destinations/study-in-canada',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const DestinationsStudyInAustraliaRoute =
-  DestinationsStudyInAustraliaRouteImport.update({
-    id: '/destinations_/study-in-australia',
-    path: '/destinations/study-in-australia',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const BlogBlogIdRoute = BlogBlogIdRouteImport.update({
   id: '/blog_/$blogId',
   path: '/blog/$blogId',
@@ -213,20 +207,20 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/scholarship-guidance': typeof ScholarshipGuidanceRoute
   '/services': typeof ServicesRoute
+  '/study-in-australia': typeof StudyInAustraliaRoute
+  '/study-in-canada': typeof StudyInCanadaRoute
+  '/study-in-france': typeof StudyInFranceRoute
+  '/study-in-germany': typeof StudyInGermanyRoute
+  '/study-in-ireland': typeof StudyInIrelandRoute
+  '/study-in-new-zealand': typeof StudyInNewZealandRoute
+  '/study-in-uk': typeof StudyInUkRoute
+  '/study-in-usa': typeof StudyInUsaRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/universities': typeof UniversitiesRoute
   '/university-applications': typeof UniversityApplicationsRoute
   '/visa-assistance': typeof VisaAssistanceRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/blog/$blogId': typeof BlogBlogIdRoute
-  '/destinations/study-in-australia': typeof DestinationsStudyInAustraliaRoute
-  '/destinations/study-in-canada': typeof DestinationsStudyInCanadaRoute
-  '/destinations/study-in-france': typeof DestinationsStudyInFranceRoute
-  '/destinations/study-in-germany': typeof DestinationsStudyInGermanyRoute
-  '/destinations/study-in-ireland': typeof DestinationsStudyInIrelandRoute
-  '/destinations/study-in-new-zealand': typeof DestinationsStudyInNewZealandRoute
-  '/destinations/study-in-uk': typeof DestinationsStudyInUkRoute
-  '/destinations/study-in-usa': typeof DestinationsStudyInUsaRoute
   '/visa-assistance/$visaKey': typeof VisaAssistanceVisaKeyRoute
 }
 export interface FileRoutesByTo {
@@ -245,20 +239,20 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/scholarship-guidance': typeof ScholarshipGuidanceRoute
   '/services': typeof ServicesRoute
+  '/study-in-australia': typeof StudyInAustraliaRoute
+  '/study-in-canada': typeof StudyInCanadaRoute
+  '/study-in-france': typeof StudyInFranceRoute
+  '/study-in-germany': typeof StudyInGermanyRoute
+  '/study-in-ireland': typeof StudyInIrelandRoute
+  '/study-in-new-zealand': typeof StudyInNewZealandRoute
+  '/study-in-uk': typeof StudyInUkRoute
+  '/study-in-usa': typeof StudyInUsaRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/universities': typeof UniversitiesRoute
   '/university-applications': typeof UniversityApplicationsRoute
   '/visa-assistance': typeof VisaAssistanceRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/blog/$blogId': typeof BlogBlogIdRoute
-  '/destinations/study-in-australia': typeof DestinationsStudyInAustraliaRoute
-  '/destinations/study-in-canada': typeof DestinationsStudyInCanadaRoute
-  '/destinations/study-in-france': typeof DestinationsStudyInFranceRoute
-  '/destinations/study-in-germany': typeof DestinationsStudyInGermanyRoute
-  '/destinations/study-in-ireland': typeof DestinationsStudyInIrelandRoute
-  '/destinations/study-in-new-zealand': typeof DestinationsStudyInNewZealandRoute
-  '/destinations/study-in-uk': typeof DestinationsStudyInUkRoute
-  '/destinations/study-in-usa': typeof DestinationsStudyInUsaRoute
   '/visa-assistance/$visaKey': typeof VisaAssistanceVisaKeyRoute
 }
 export interface FileRoutesById {
@@ -278,20 +272,20 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/scholarship-guidance': typeof ScholarshipGuidanceRoute
   '/services': typeof ServicesRoute
+  '/study-in-australia': typeof StudyInAustraliaRoute
+  '/study-in-canada': typeof StudyInCanadaRoute
+  '/study-in-france': typeof StudyInFranceRoute
+  '/study-in-germany': typeof StudyInGermanyRoute
+  '/study-in-ireland': typeof StudyInIrelandRoute
+  '/study-in-new-zealand': typeof StudyInNewZealandRoute
+  '/study-in-uk': typeof StudyInUkRoute
+  '/study-in-usa': typeof StudyInUsaRoute
   '/success-stories': typeof SuccessStoriesRoute
   '/universities': typeof UniversitiesRoute
   '/university-applications': typeof UniversityApplicationsRoute
   '/visa-assistance': typeof VisaAssistanceRoute
   '/why-choose-us': typeof WhyChooseUsRoute
   '/blog_/$blogId': typeof BlogBlogIdRoute
-  '/destinations_/study-in-australia': typeof DestinationsStudyInAustraliaRoute
-  '/destinations_/study-in-canada': typeof DestinationsStudyInCanadaRoute
-  '/destinations_/study-in-france': typeof DestinationsStudyInFranceRoute
-  '/destinations_/study-in-germany': typeof DestinationsStudyInGermanyRoute
-  '/destinations_/study-in-ireland': typeof DestinationsStudyInIrelandRoute
-  '/destinations_/study-in-new-zealand': typeof DestinationsStudyInNewZealandRoute
-  '/destinations_/study-in-uk': typeof DestinationsStudyInUkRoute
-  '/destinations_/study-in-usa': typeof DestinationsStudyInUsaRoute
   '/visa-assistance_/$visaKey': typeof VisaAssistanceVisaKeyRoute
 }
 export interface FileRouteTypes {
@@ -312,20 +306,20 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/scholarship-guidance'
     | '/services'
+    | '/study-in-australia'
+    | '/study-in-canada'
+    | '/study-in-france'
+    | '/study-in-germany'
+    | '/study-in-ireland'
+    | '/study-in-new-zealand'
+    | '/study-in-uk'
+    | '/study-in-usa'
     | '/success-stories'
     | '/universities'
     | '/university-applications'
     | '/visa-assistance'
     | '/why-choose-us'
     | '/blog/$blogId'
-    | '/destinations/study-in-australia'
-    | '/destinations/study-in-canada'
-    | '/destinations/study-in-france'
-    | '/destinations/study-in-germany'
-    | '/destinations/study-in-ireland'
-    | '/destinations/study-in-new-zealand'
-    | '/destinations/study-in-uk'
-    | '/destinations/study-in-usa'
     | '/visa-assistance/$visaKey'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -344,20 +338,20 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/scholarship-guidance'
     | '/services'
+    | '/study-in-australia'
+    | '/study-in-canada'
+    | '/study-in-france'
+    | '/study-in-germany'
+    | '/study-in-ireland'
+    | '/study-in-new-zealand'
+    | '/study-in-uk'
+    | '/study-in-usa'
     | '/success-stories'
     | '/universities'
     | '/university-applications'
     | '/visa-assistance'
     | '/why-choose-us'
     | '/blog/$blogId'
-    | '/destinations/study-in-australia'
-    | '/destinations/study-in-canada'
-    | '/destinations/study-in-france'
-    | '/destinations/study-in-germany'
-    | '/destinations/study-in-ireland'
-    | '/destinations/study-in-new-zealand'
-    | '/destinations/study-in-uk'
-    | '/destinations/study-in-usa'
     | '/visa-assistance/$visaKey'
   id:
     | '__root__'
@@ -376,20 +370,20 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/scholarship-guidance'
     | '/services'
+    | '/study-in-australia'
+    | '/study-in-canada'
+    | '/study-in-france'
+    | '/study-in-germany'
+    | '/study-in-ireland'
+    | '/study-in-new-zealand'
+    | '/study-in-uk'
+    | '/study-in-usa'
     | '/success-stories'
     | '/universities'
     | '/university-applications'
     | '/visa-assistance'
     | '/why-choose-us'
     | '/blog_/$blogId'
-    | '/destinations_/study-in-australia'
-    | '/destinations_/study-in-canada'
-    | '/destinations_/study-in-france'
-    | '/destinations_/study-in-germany'
-    | '/destinations_/study-in-ireland'
-    | '/destinations_/study-in-new-zealand'
-    | '/destinations_/study-in-uk'
-    | '/destinations_/study-in-usa'
     | '/visa-assistance_/$visaKey'
   fileRoutesById: FileRoutesById
 }
@@ -409,20 +403,20 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ScholarshipGuidanceRoute: typeof ScholarshipGuidanceRoute
   ServicesRoute: typeof ServicesRoute
+  StudyInAustraliaRoute: typeof StudyInAustraliaRoute
+  StudyInCanadaRoute: typeof StudyInCanadaRoute
+  StudyInFranceRoute: typeof StudyInFranceRoute
+  StudyInGermanyRoute: typeof StudyInGermanyRoute
+  StudyInIrelandRoute: typeof StudyInIrelandRoute
+  StudyInNewZealandRoute: typeof StudyInNewZealandRoute
+  StudyInUkRoute: typeof StudyInUkRoute
+  StudyInUsaRoute: typeof StudyInUsaRoute
   SuccessStoriesRoute: typeof SuccessStoriesRoute
   UniversitiesRoute: typeof UniversitiesRoute
   UniversityApplicationsRoute: typeof UniversityApplicationsRoute
   VisaAssistanceRoute: typeof VisaAssistanceRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
   BlogBlogIdRoute: typeof BlogBlogIdRoute
-  DestinationsStudyInAustraliaRoute: typeof DestinationsStudyInAustraliaRoute
-  DestinationsStudyInCanadaRoute: typeof DestinationsStudyInCanadaRoute
-  DestinationsStudyInFranceRoute: typeof DestinationsStudyInFranceRoute
-  DestinationsStudyInGermanyRoute: typeof DestinationsStudyInGermanyRoute
-  DestinationsStudyInIrelandRoute: typeof DestinationsStudyInIrelandRoute
-  DestinationsStudyInNewZealandRoute: typeof DestinationsStudyInNewZealandRoute
-  DestinationsStudyInUkRoute: typeof DestinationsStudyInUkRoute
-  DestinationsStudyInUsaRoute: typeof DestinationsStudyInUsaRoute
   VisaAssistanceVisaKeyRoute: typeof VisaAssistanceVisaKeyRoute
 }
 
@@ -461,6 +455,62 @@ declare module '@tanstack/react-router' {
       path: '/success-stories'
       fullPath: '/success-stories'
       preLoaderRoute: typeof SuccessStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-usa': {
+      id: '/study-in-usa'
+      path: '/study-in-usa'
+      fullPath: '/study-in-usa'
+      preLoaderRoute: typeof StudyInUsaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-uk': {
+      id: '/study-in-uk'
+      path: '/study-in-uk'
+      fullPath: '/study-in-uk'
+      preLoaderRoute: typeof StudyInUkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-new-zealand': {
+      id: '/study-in-new-zealand'
+      path: '/study-in-new-zealand'
+      fullPath: '/study-in-new-zealand'
+      preLoaderRoute: typeof StudyInNewZealandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-ireland': {
+      id: '/study-in-ireland'
+      path: '/study-in-ireland'
+      fullPath: '/study-in-ireland'
+      preLoaderRoute: typeof StudyInIrelandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-germany': {
+      id: '/study-in-germany'
+      path: '/study-in-germany'
+      fullPath: '/study-in-germany'
+      preLoaderRoute: typeof StudyInGermanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-france': {
+      id: '/study-in-france'
+      path: '/study-in-france'
+      fullPath: '/study-in-france'
+      preLoaderRoute: typeof StudyInFranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-canada': {
+      id: '/study-in-canada'
+      path: '/study-in-canada'
+      fullPath: '/study-in-canada'
+      preLoaderRoute: typeof StudyInCanadaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-australia': {
+      id: '/study-in-australia'
+      path: '/study-in-australia'
+      fullPath: '/study-in-australia'
+      preLoaderRoute: typeof StudyInAustraliaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -575,62 +625,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VisaAssistanceVisaKeyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/destinations_/study-in-usa': {
-      id: '/destinations_/study-in-usa'
-      path: '/destinations/study-in-usa'
-      fullPath: '/destinations/study-in-usa'
-      preLoaderRoute: typeof DestinationsStudyInUsaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-uk': {
-      id: '/destinations_/study-in-uk'
-      path: '/destinations/study-in-uk'
-      fullPath: '/destinations/study-in-uk'
-      preLoaderRoute: typeof DestinationsStudyInUkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-new-zealand': {
-      id: '/destinations_/study-in-new-zealand'
-      path: '/destinations/study-in-new-zealand'
-      fullPath: '/destinations/study-in-new-zealand'
-      preLoaderRoute: typeof DestinationsStudyInNewZealandRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-ireland': {
-      id: '/destinations_/study-in-ireland'
-      path: '/destinations/study-in-ireland'
-      fullPath: '/destinations/study-in-ireland'
-      preLoaderRoute: typeof DestinationsStudyInIrelandRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-germany': {
-      id: '/destinations_/study-in-germany'
-      path: '/destinations/study-in-germany'
-      fullPath: '/destinations/study-in-germany'
-      preLoaderRoute: typeof DestinationsStudyInGermanyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-france': {
-      id: '/destinations_/study-in-france'
-      path: '/destinations/study-in-france'
-      fullPath: '/destinations/study-in-france'
-      preLoaderRoute: typeof DestinationsStudyInFranceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-canada': {
-      id: '/destinations_/study-in-canada'
-      path: '/destinations/study-in-canada'
-      fullPath: '/destinations/study-in-canada'
-      preLoaderRoute: typeof DestinationsStudyInCanadaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations_/study-in-australia': {
-      id: '/destinations_/study-in-australia'
-      path: '/destinations/study-in-australia'
-      fullPath: '/destinations/study-in-australia'
-      preLoaderRoute: typeof DestinationsStudyInAustraliaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/blog_/$blogId': {
       id: '/blog_/$blogId'
       path: '/blog/$blogId'
@@ -657,20 +651,20 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ScholarshipGuidanceRoute: ScholarshipGuidanceRoute,
   ServicesRoute: ServicesRoute,
+  StudyInAustraliaRoute: StudyInAustraliaRoute,
+  StudyInCanadaRoute: StudyInCanadaRoute,
+  StudyInFranceRoute: StudyInFranceRoute,
+  StudyInGermanyRoute: StudyInGermanyRoute,
+  StudyInIrelandRoute: StudyInIrelandRoute,
+  StudyInNewZealandRoute: StudyInNewZealandRoute,
+  StudyInUkRoute: StudyInUkRoute,
+  StudyInUsaRoute: StudyInUsaRoute,
   SuccessStoriesRoute: SuccessStoriesRoute,
   UniversitiesRoute: UniversitiesRoute,
   UniversityApplicationsRoute: UniversityApplicationsRoute,
   VisaAssistanceRoute: VisaAssistanceRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
   BlogBlogIdRoute: BlogBlogIdRoute,
-  DestinationsStudyInAustraliaRoute: DestinationsStudyInAustraliaRoute,
-  DestinationsStudyInCanadaRoute: DestinationsStudyInCanadaRoute,
-  DestinationsStudyInFranceRoute: DestinationsStudyInFranceRoute,
-  DestinationsStudyInGermanyRoute: DestinationsStudyInGermanyRoute,
-  DestinationsStudyInIrelandRoute: DestinationsStudyInIrelandRoute,
-  DestinationsStudyInNewZealandRoute: DestinationsStudyInNewZealandRoute,
-  DestinationsStudyInUkRoute: DestinationsStudyInUkRoute,
-  DestinationsStudyInUsaRoute: DestinationsStudyInUsaRoute,
   VisaAssistanceVisaKeyRoute: VisaAssistanceVisaKeyRoute,
 }
 export const routeTree = rootRouteImport

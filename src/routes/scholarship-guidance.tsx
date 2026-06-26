@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { PageHero } from "@/components/PageHero";
 import { FreeConsultationCTA } from "@/components/cta/FreeConsultationCTA";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
@@ -45,6 +45,12 @@ const scholarshipTypes = [
 ];
 
 function ScholarshipGuidancePage() {
+  const shouldReduceMotion = useReducedMotion();
+  const motionProps = (delay = 0, axis = "y", distance = 30) =>
+    shouldReduceMotion
+      ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: viewportOnce, transition: { duration: 0.3, delay } }
+      : { initial: { opacity: 0, [axis]: distance }, whileInView: { opacity: 1, [axis]: 0 }, viewport: viewportOnce, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const, delay } };
+
   return (
     <div className="flex flex-col min-h-screen">
       <PageHero
@@ -110,7 +116,7 @@ function ScholarshipGuidancePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="group relative bg-background border border-border rounded-2xl p-7 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                whileHover={shouldReduceMotion ? undefined : { y: -8, boxShadow: "0 16px 40px rgba(0,0,0,0.12)" }} className="group relative bg-background border border-border rounded-2xl p-7 hover:border-accent/50 hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 <div className="relative z-10">
