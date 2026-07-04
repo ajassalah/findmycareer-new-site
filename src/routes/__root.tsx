@@ -109,7 +109,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Find My Career",
           url: "https://findmycareer.org.uk",
           description: "Sri Lanka-based international education consultancy with 17+ years of experience.",
-          address: { "@type": "PostalAddress", addressCountry: "LK", addressLocality: "Colombo" },
+          address: [
+            {
+              "@type": "PostalAddress",
+              streetAddress: "2nd Floor, 4 De Montfort St",
+              addressLocality: "Leicester",
+              postalCode: "LE1 7GA",
+              addressCountry: "GB",
+            },
+            {
+              "@type": "PostalAddress",
+              streetAddress: "No. 18, Beltona Lane",
+              addressLocality: "Colombo",
+              postalCode: "04",
+              addressCountry: "LK",
+            },
+          ],
           areaServed: ["LK", "GB", "AU", "CA", "DE", "FR", "IE", "NZ", "US"],
         }),
       },

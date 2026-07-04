@@ -31,7 +31,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact Find My Career in Colombo for university applications, visas, IELTS preparation, scholarships, and study abroad guidance.",
+          "Contact Find My Career in Leicester or Colombo for university applications, visas, IELTS preparation, scholarships, and study abroad guidance.",
       },
       { property: "og:title", content: "Contact Find My Career" },
       {
@@ -46,6 +46,9 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const mapUrl = (address: string) => `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+const mapEmbedUrl = (address: string) => `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+
 const contactCards = [
   {
     icon: Phone,
@@ -59,12 +62,12 @@ const contactCards = [
     value: SITE.email,
     href: `mailto:${SITE.email}`,
   },
-  {
+  ...SITE.addresses.map((location) => ({
     icon: MapPin,
-    label: "Visit",
-    value: SITE.address,
-    href: "https://maps.google.com/?q=No.+18+Beltona+Lane+Colombo+04+Sri+Lanka",
-  },
+    label: `Visit - ${location.label}`,
+    value: location.address,
+    href: mapUrl(location.address),
+  })),
 ];
 
 function ContactPage() {
@@ -114,8 +117,8 @@ function ContactPage() {
                 <a
                   key={item.label}
                   href={item.href}
-                  target={item.label === "Visit" ? "_blank" : undefined}
-                  rel={item.label === "Visit" ? "noopener noreferrer" : undefined}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="group flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
                 >
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent/15 text-accent">
@@ -146,15 +149,17 @@ function ContactPage() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-                <iframe
-                  title="Find My Career office location"
-                  src="https://www.google.com/maps?q=No.%2018%20Beltona%20Lane%20Colombo%2004%20Sri%20Lanka&output=embed"
-                  className="h-72 w-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+              {SITE.addresses.map((location) => (
+                <div key={location.label} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+                  <iframe
+                    title={`Find My Career ${location.label} office location`}
+                    src={mapEmbedUrl(location.address)}
+                    className="h-72 w-full"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              ))}
             </motion.div>
 
             <motion.div variants={fadeUp} className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-elegant)] lg:p-10">

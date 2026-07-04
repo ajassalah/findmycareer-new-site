@@ -15,6 +15,8 @@ const legal = [
   { label: "Privacy Policy", to: "/privacy-policy" },
 ];
 
+const mapUrl = (address: string) => `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+
 export function Footer() {
   return (
     <footer className="bg-[#0A1628] text-white relative overflow-hidden">
@@ -75,10 +77,15 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4 text-accent">Contact</h4>
             <ul className="space-y-3 text-sm text-slate-300">
-              <li className="flex gap-3">
-                <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href="https://maps.google.com/?q=No.+18+Beltona+Lane+Colombo+04+Sri+Lanka" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors break-words">{SITE.address}</a>
-              </li>
+              {SITE.addresses.map((location) => (
+                <li key={location.label} className="flex gap-3">
+                  <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                  <span>
+                    <span className="block font-semibold text-white">{location.label}</span>
+                    <a href={mapUrl(location.address)} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors break-words">{location.address}</a>
+                  </span>
+                </li>
+              ))}
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <a href={`tel:${SITE.phone}`} className="hover:text-accent transition-colors">{SITE.phone}</a>

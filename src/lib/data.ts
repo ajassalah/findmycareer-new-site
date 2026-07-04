@@ -2,13 +2,25 @@ import {
   GraduationCap, FileCheck, Languages, Award, Plane, LifeBuoy,
 } from "lucide-react";
 
+export const SITE_ADDRESSES = [
+  {
+    label: "United Kingdom",
+    address: "2nd Floor, 4 De Montfort St, Leicester LE1 7GA, United Kingdom",
+  },
+  {
+    label: "Sri Lanka",
+    address: "No. 18, Beltona Lane, Colombo - 04 Sri Lanka",
+  },
+];
+
 export const SITE = {
   name: "Find My Career",
   tagline: "Study Abroad Consultancy",
   domain: "findmycareer.org.uk",
   phone: "+94 117 221 192",
   email: "info@findmycareer.org.uk",
-  address: "No. 18, Beltona Lane, Colombo - 04 Sri Lanka",
+  address: SITE_ADDRESSES[0].address,
+  addresses: SITE_ADDRESSES,
 };
 
 export const NAV_LINKS = [
