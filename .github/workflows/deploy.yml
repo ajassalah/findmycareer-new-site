@@ -25,14 +25,15 @@ jobs:
       - run: npm ci
 
       - run: npm run build
+        env:
+          NITRO_PRESET: node-server
 
       - name: Prepare bundle
         run: |
           rm -rf deploy
-          mkdir -p deploy/.next
-          cp -a .next/standalone/. deploy/
-          cp -r .next/static deploy/.next/static
-          cp -r public deploy/public || true
+          test -f .output/server/index.mjs
+          mkdir -p deploy
+          cp -a .output/. deploy/
           tar -czf release.tar.gz -C deploy .
 
       - name: Upload bundle
@@ -85,8 +86,8 @@ jobs:
             set +a
 
             pm2 delete "$APP_NAME" 2>/dev/null || true
-            env -u HOSTNAME HOSTNAME=0.0.0.0 HOST=0.0.0.0 PORT="$APP_PORT" NODE_ENV=production \
-              pm2 start server.js --name "$APP_NAME"
+            env HOST=0.0.0.0 PORT="$APP_PORT" NODE_ENV=production \
+              pm2 start server/index.mjs --name "$APP_NAME"
 
             pm2 save
             rm -f /tmp/release.tar.gz
