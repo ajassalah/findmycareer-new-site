@@ -25,15 +25,15 @@ jobs:
       - run: npm ci
 
       - run: npm run build
-        env:
-          NITRO_PRESET: node-server
 
       - name: Prepare bundle
         run: |
-          rm -rf deploy
-          test -f .output/server/index.mjs
+          rm -rf deploy release.tar.gz
+          test -f .next/BUILD_ID
           mkdir -p deploy
-          cp -a .output/. deploy/
+          cp -a .next deploy/.next
+          cp -a public deploy/public
+          cp package.json package-lock.json next.config.mjs ecosystem.config.cjs deploy/
           tar -czf release.tar.gz -C deploy .
 
       - name: Upload bundle
@@ -81,13 +81,15 @@ jobs:
             ln -sfn "$RELEASE_DIR" "$CURRENT_LINK"
 
             cd "$CURRENT_LINK"
+            npm ci --omit=dev
+
             set -a
             . "$SHARED_DIR/.env.production"
             set +a
 
             pm2 delete "$APP_NAME" 2>/dev/null || true
             env HOST=0.0.0.0 PORT="$APP_PORT" NODE_ENV=production \
-              pm2 start server/index.mjs --name "$APP_NAME"
+              pm2 start node_modules/next/dist/bin/next --name "$APP_NAME" -- start -p "$APP_PORT" -H 0.0.0.0
 
             pm2 save
             rm -f /tmp/release.tar.gz
