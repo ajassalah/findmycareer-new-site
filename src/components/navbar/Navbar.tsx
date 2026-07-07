@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import logo from "@/assets/fmc-logo.png";
@@ -13,7 +14,7 @@ const dropdownVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] as const },
   },
   exit: {
     opacity: 0,
@@ -28,7 +29,7 @@ const itemVariants = {
   show: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.18, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.18, delay: i * 0.04, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -43,7 +44,8 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hoverDropdown, setHoverDropdown] = useState<string | null>(null);
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const router = useRouter();
+  const pathname = router.asPath.split("?")[0].split("#")[0];
   const shouldReduceMotion = useReducedMotion();
 
   // Pages where we always want a solid (non-transparent) navbar
@@ -69,7 +71,7 @@ export function Navbar() {
     <motion.header
       initial={shouldReduceMotion ? false : { y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         isSolid
@@ -78,7 +80,7 @@ export function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <img
             src={logo}
             alt="Find My Career — Study Abroad Consultancy"
@@ -105,7 +107,7 @@ export function Navbar() {
               >
                 {l.to ? (
                   <Link
-                    to={l.to}
+                    href={l.to}
                     className={cn(
                       "relative px-3.5 py-2 text-sm font-semibold transition-colors rounded-lg flex items-center gap-1.5",
                       isSolid ? "text-foreground" : "text-white",
@@ -175,7 +177,7 @@ export function Navbar() {
                                   animate="show"
                                 >
                                   <Link
-                                    to={sub.to}
+                                    href={sub.to}
                                     className={cn(
                                       "group flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 whitespace-nowrap",
                                       subActive
@@ -237,7 +239,7 @@ export function Navbar() {
             initial={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
             className="lg:hidden overflow-hidden border-t border-border bg-background/98 backdrop-blur-xl"
           >
             <div className="px-4 py-5 flex flex-col gap-0.5 max-h-[80vh] overflow-y-auto">
@@ -292,7 +294,7 @@ export function Navbar() {
                                       transition={{ delay: shouldReduceMotion ? 0 : idx * 0.05 }}
                                     >
                                       <Link
-                                        to={sub.to}
+                                        href={sub.to}
                                         onClick={() => setOpen(false)}
                                         className={cn(
                                           "flex items-center gap-3 px-3 py-2.5 text-sm font-semibold rounded-lg transition-colors",
@@ -319,7 +321,7 @@ export function Navbar() {
                       </div>
                     ) : (
                       <Link
-                        to={l.to!}
+                        href={l.to!}
                         onClick={() => setOpen(false)}
                         className={cn(
                           "flex items-center px-4 py-3.5 text-base font-bold text-foreground hover:bg-muted hover:text-accent rounded-xl transition-colors",

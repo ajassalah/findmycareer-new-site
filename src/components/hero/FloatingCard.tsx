@@ -4,6 +4,11 @@ import { GraduationCap, CheckCircle2, Star } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/data";
 
 const orbiting = ["🇬🇧", "🇦🇺", "🇨🇦", "🇩🇪", "🇫🇷"];
+const scoreCards = [
+  { label: "IELTS", val: "8.0" },
+  { label: "GPA", val: "3.8" },
+  { label: "Visa", val: "✓" },
+];
 
 export function FloatingCard() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,11 +77,7 @@ export function FloatingCard() {
               </div>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-              {[
-                { label: "IELTS", val: (7.0 + Math.random() * 1.5).toFixed(1) },
-                { label: "GPA", val: (3.5 + Math.random() * 0.5).toFixed(1) },
-                { label: "Visa", val: "✓" },
-              ].map((s) => (
+              {scoreCards.map((s) => (
                 <div key={s.label} className="rounded-lg bg-slate-50 p-2">
                   <p className="text-[10px] uppercase text-slate-500 tracking-wider">{s.label}</p>
                   <p className="text-sm font-bold text-[#0A1628]">{s.val}</p>

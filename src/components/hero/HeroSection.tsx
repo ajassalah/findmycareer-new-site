@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import { ParticleBackground } from "./ParticleBackground";
 import { FloatingCard } from "./FloatingCard";
@@ -59,14 +59,14 @@ export function HeroSection() {
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row flex-wrap gap-3 w-full">
               <Link
-                to="/apply-now"
+                href="/apply-now"
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold shadow-[var(--shadow-glow-gold)] hover:scale-105 active:scale-95 transition-transform text-sm sm:text-base w-full sm:w-auto text-center"
               >
                 Start Your Journey
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/30 hover:bg-white hover:text-[#0A1628] font-semibold transition-colors text-sm sm:text-base w-full sm:w-auto text-center"
               >
                 Book Free Consultation

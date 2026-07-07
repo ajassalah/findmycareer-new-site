@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { viewportOnce } from "@/lib/animations";
 
@@ -47,7 +47,7 @@ export function FreeConsultationCTA() {
           <a href="https://register.findmycareer.org.uk/apply" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold shadow-[var(--shadow-glow-gold)] hover:scale-105 transition-transform">
             Apply Now <ArrowRight className="w-4 h-4" />
           </a>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 hover:bg-white hover:text-[#0A1628] font-semibold transition-colors">
+          <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 hover:bg-white hover:text-[#0A1628] font-semibold transition-colors">
             Book Free Consultation
           </Link>
         </div>

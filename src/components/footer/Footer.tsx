@@ -1,8 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/fmc-logo.png";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
+
+const COPYRIGHT_YEAR = 2026;
 
 const socials = [
   { icon: Facebook, href: "https://www.facebook.com/findmycareer.org.uk?_rdc=1&_rdr" },
@@ -55,7 +57,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               {NAV_LINKS.filter((l) => !!l.to).map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to!} className="hover:text-accent transition-colors">{l.label}</Link>
+                  <Link href={l.to!} className="hover:text-accent transition-colors">{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -67,7 +69,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               {SERVICES.map((s) => (
                 <li key={s.title}>
-                  <Link to={s.to} className="hover:text-accent transition-colors">{s.title}</Link>
+                  <Link href={s.to} className="hover:text-accent transition-colors">{s.title}</Link>
                 </li>
               ))}
             </ul>
@@ -100,7 +102,7 @@ export function Footer() {
             <ul className="flex items-center gap-4 text-sm text-slate-300">
               {legal.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-accent transition-colors">{l.label}</Link>
+                  <Link href={l.to} className="hover:text-accent transition-colors">{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -108,7 +110,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-3 justify-between items-center text-sm text-slate-400">
-          <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <p>© {COPYRIGHT_YEAR} {SITE.name}. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-3">
             <p>Powered by <a href="https://levelweb.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">levelweb.co.uk</a></p>
           </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { DESTINATIONS } from "@/lib/data";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 
@@ -23,7 +23,7 @@ export function DestinationsSection() {
               whileHover={{ y: -6 }}
               className="group relative h-72 rounded-2xl overflow-hidden shadow-md hover:shadow-[var(--shadow-elegant)] transition-shadow"
             >
-              <Link to={d.to} className="block absolute inset-0">
+              <Link href={d.to} className="block absolute inset-0">
                 <img
                   src={d.image}
                   alt={`${d.name} landmark`}

@@ -2,7 +2,7 @@ import type { Variants } from "framer-motion";
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export const fadeIn: Variants = {
@@ -12,12 +12,12 @@ export const fadeIn: Variants = {
 
 export const fadeLeft: Variants = {
   hidden: { opacity: 0, x: -40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export const fadeRight: Variants = {
   hidden: { opacity: 0, x: 40 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export const stagger = (staggerChildren = 0.1, delayChildren = 0): Variants => ({
@@ -27,7 +27,7 @@ export const stagger = (staggerChildren = 0.1, delayChildren = 0): Variants => (
 
 export const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.85 },
-  show: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 // Dropdown slide-down reveal
@@ -37,7 +37,7 @@ export const dropdownReveal: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] as const },
   },
   exit: {
     opacity: 0,
@@ -50,7 +50,7 @@ export const dropdownReveal: Variants = {
 // Staggered child for dropdown items
 export const dropdownItem: Variants = {
   hidden: { opacity: 0, x: -8 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 // Reduced-motion-safe variants (instant)

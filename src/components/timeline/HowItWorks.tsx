@@ -118,7 +118,7 @@ export function HowItWorks() {
                   transition={
                     shouldReduceMotion
                       ? { duration: 0.3 }
-                      : { delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+                      : { delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
                   }
                   whileHover={shouldReduceMotion ? undefined : { y: -6 }}
                   className="text-center group cursor-default"

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
 import { 
   CheckCircle2, BookOpen, Headphones, PenTool, Mic, 

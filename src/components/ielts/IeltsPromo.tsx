@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { fadeUp, fadeLeft, fadeRight, stagger, viewportOnce } from "@/lib/animations";
 
@@ -72,7 +72,7 @@ export function IeltsPromo() {
                       initial={{ width: 0 }}
                       whileInView={{ width: `${b.pct}%` }}
                       viewport={viewportOnce}
-                      transition={{ duration: 1.2, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 1.2, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] as const }}
                       className="h-full rounded-full bg-gradient-to-r from-[#0A1628] to-[#3B82F6]"
                     />
                   </div>
