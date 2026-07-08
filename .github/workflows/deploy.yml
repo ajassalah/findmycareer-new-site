@@ -43,11 +43,31 @@ jobs:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
           DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
         run: |
+          set -eu
+
+          : "${DEPLOY_HOST:?Missing DEPLOY_HOST secret}"
+          : "${DEPLOY_USER:?Missing DEPLOY_USER secret}"
+          : "${DEPLOY_SSH_KEY:?Missing DEPLOY_SSH_KEY secret}"
+          DEPLOY_PORT="${DEPLOY_PORT:-22}"
+
           install -m 700 -d ~/.ssh
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+          ssh-keygen -lf ~/.ssh/deploy_key >/dev/null
           ssh-keyscan -p "$DEPLOY_PORT" "$DEPLOY_HOST" >> ~/.ssh/known_hosts
-          scp -i ~/.ssh/deploy_key -P "$DEPLOY_PORT" release.tar.gz "$DEPLOY_USER@$DEPLOY_HOST:/tmp/release.tar.gz"
+
+          ssh -i ~/.ssh/deploy_key \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -o StrictHostKeyChecking=yes \
+            -p "$DEPLOY_PORT" \
+            "$DEPLOY_USER@$DEPLOY_HOST" "true"
+
+          scp -i ~/.ssh/deploy_key \
+            -o BatchMode=yes \
+            -o IdentitiesOnly=yes \
+            -P "$DEPLOY_PORT" \
+            release.tar.gz "$DEPLOY_USER@$DEPLOY_HOST:/tmp/release.tar.gz"
 
       - name: Activate release
         uses: appleboy/ssh-action@v1.2.5
