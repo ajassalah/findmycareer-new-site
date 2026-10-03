@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import type { FormEvent } from "react";
 import {
   ArrowRight,
@@ -11,7 +12,8 @@ import {
 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { fadeUp, stagger, viewportOnce } from "@/lib/animations";
-import { SITE } from "@/lib/data";
+import { DESTINATIONS, SERVICES, SITE } from "@/lib/data";
+import { COUNTRIES, flagForCountry } from "@/lib/countries";
 
 type ContactSearch = {
   interestedIn?: string;
@@ -28,8 +30,14 @@ const contactCards = [
   {
     icon: Phone,
     label: "Call us",
-    value: SITE.phone,
-    href: `tel:${SITE.phone}`,
+    value: `${SITE.phone} / ${SITE.ukPhone}`,
+    href: `tel:${SITE.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: SITE.ukPhone,
+    href: `https://wa.me/${SITE.ukPhone.replace(/\D/g, "")}`,
   },
   {
     icon: Mail,
@@ -47,31 +55,37 @@ const contactCards = [
 
 export default function ContactPage() {
   const { query } = useRouter();
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [country, setCountry] = useState("LK");
+  const selectedCountry = COUNTRIES.find((item) => item.code === country);
   const search: ContactSearch = {
     interestedIn: normalizeSearchValue(query.interestedIn),
     message: normalizeSearchValue(query.message),
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = form.get("name")?.toString().trim() ?? "";
-    const email = form.get("email")?.toString().trim() ?? "";
-    const phone = form.get("phone")?.toString().trim() ?? "";
-    const interestedIn = form.get("interestedIn")?.toString().trim() ?? "";
-    const message = form.get("message")?.toString().trim() ?? "";
-
-    const body = [
-      name && `Name: ${name}`,
-      email && `Email: ${email}`,
-      phone && `Phone: ${phone}`,
-      interestedIn && `Interested in: ${interestedIn}`,
-      message && `Message: ${message}`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent("Study abroad consultation request")}&body=${encodeURIComponent(body)}`;
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
+    setStatus("sending");
+    setErrorMessage("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(form.entries())),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(data?.error || "Contact submission failed");
+      }
+      setStatus("success");
+      formElement.reset();
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Unable to send your enquiry.");
+    }
   };
 
   return (
@@ -128,17 +142,19 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {SITE.addresses.map((location) => (
-                <div key={location.label} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-                  <iframe
-                    title={`Find My Career ${location.label} office location`}
-                    src={mapEmbedUrl(location.address)}
-                    className="h-72 w-full"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              ))}
+              <div className="grid gap-5 sm:grid-cols-2">
+                {SITE.addresses.map((location) => (
+                  <div key={location.label} className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+                    <iframe
+                      title={`Find My Career ${location.label} office location`}
+                      src={mapEmbedUrl(location.address)}
+                      className="h-72 w-full"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             <motion.div variants={fadeUp} className="rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-elegant)] lg:p-10">
@@ -149,23 +165,43 @@ export default function ContactPage() {
                 <div>
                   <h2 className="text-2xl font-bold text-foreground">Send us a message</h2>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Your email app will open with the details ready to send.
+                    Send your enquiry directly to our admissions team.
                   </p>
                 </div>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Field label="Full name" name="name" placeholder="Your name" required />
-                  <Field label="Phone" name="phone" placeholder="+94 ..." />
+                <Field label="Full name" name="name" placeholder="Your full name" minLength={2} required />
+                <div>
+                  <label className="text-sm font-medium text-foreground" htmlFor="country">Country <span className="text-red-500">*</span></label>
+                  <select id="country" name="country" value={country} onChange={(event) => setCountry(event.target.value)} required className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                    <option value="">Select your country</option>
+                    {COUNTRIES.map((item) => <option key={item.code} value={item.code}>{flagForCountry(item.code)} {item.name}{item.dialCode ? ` (${item.dialCode})` : ""}</option>)}
+                  </select>
                 </div>
+                <Field label="Phone number" name="phone" placeholder={`e.g. ${selectedCountry?.dialCode || "+country code"} 77 123 4567`} minLength={10} pattern="[+0-9 ()-]{10,}" required />
                 <Field label="Email" name="email" type="email" placeholder="you@email.com" required />
-                <Field
-                  label="Interested in"
-                  name="interestedIn"
-                  placeholder="Student visa, IELTS, Innovator Founder Visa..."
-                  defaultValue={search.interestedIn}
-                />
+                <div>
+                  <label className="text-sm font-medium text-foreground" htmlFor="interestedIn">
+                    Interested in
+                  </label>
+                  <select
+                    id="interestedIn"
+                    name="interestedIn"
+                    defaultValue={search.interestedIn}
+                    required
+                    className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                  >
+                    <option value="">Select a service or destination</option>
+                    <optgroup label="Services">
+                      {SERVICES.map((service) => <option key={service.to} value={service.title}>{service.title}</option>)}
+                    </optgroup>
+                    <optgroup label="Destinations">
+                      {DESTINATIONS.map((destination) => <option key={destination.to} value={`Study in ${destination.name}`}>Study in {destination.name}</option>)}
+                    </optgroup>
+                    <option value="Innovator Founder Visa">Innovator Founder Visa</option>
+                  </select>
+                </div>
                 <div>
                   <label className="text-sm font-medium text-foreground" htmlFor="message">
                     Message
@@ -176,17 +212,32 @@ export default function ContactPage() {
                     rows={6}
                     defaultValue={search.message}
                     placeholder="Tell us about your goals, destination, timeline, and current qualifications."
+                    minLength={10}
+                    required
                     className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
                   />
                 </div>
                 <button className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 font-semibold text-accent-foreground shadow-[var(--shadow-glow-gold)] transition-transform hover:scale-[1.02] sm:w-auto">
-                  Send enquiry <ArrowRight className="h-4 w-4" />
+                  {status === "sending" ? "Sending…" : "Send enquiry"} <ArrowRight className="h-4 w-4" />
                 </button>
+                {status === "success" && <p role="status" className="text-sm text-green-600">Thanks — your enquiry has been sent. We’ll be in touch soon.</p>}
+                {status === "error" && <p role="alert" className="text-sm text-red-600">{errorMessage} Please email {SITE.email} directly if the problem continues.</p>}
               </form>
             </motion.div>
           </motion.div>
         </div>
       </section>
+
+      {status === "success" && (
+        <div className="fixed inset-0 z-[60] grid place-items-center bg-slate-950/60 px-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Enquiry sent">
+          <div className="w-full max-w-md rounded-3xl border border-border bg-card p-8 text-center shadow-2xl">
+            <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-green-100 text-3xl text-green-600">✓</div>
+            <h2 className="mt-5 text-2xl font-bold text-foreground">Enquiry sent successfully</h2>
+            <p className="mt-2 text-muted-foreground">Thank you for contacting Find My Career. Our team will get back to you soon.</p>
+            <button type="button" onClick={() => setStatus("idle")} className="mt-6 rounded-full bg-accent px-6 py-3 font-semibold text-accent-foreground">Close</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

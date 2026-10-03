@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, Music2, MessageCircle } from "lucide-react";
 import logo from "@/assets/fmc-logo.png";
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
 
 const COPYRIGHT_YEAR = 2026;
 
 const socials = [
-  { icon: Facebook, href: "https://www.facebook.com/findmycareer.org.uk?_rdc=1&_rdr" },
-  { icon: Instagram, href: "https://www.instagram.com/findmycareer/" },
-  { icon: Linkedin, href: "https://www.linkedin.com/company/find-my-career/" },
+  { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/findmycareer.org.uk?_rdc=1&_rdr" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/findmycareer/" },
+  { icon: Music2, label: "TikTok", href: "https://www.tiktok.com/@_findmycareer_?is_from_webapp=1&sender_device=pc" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/find-my-career/" },
 ];
 
 const legal = [
@@ -36,12 +37,13 @@ export function Footer() {
               dream to degree across the UK, Australia, Canada, Europe and beyond.
             </p>
             <div className="mt-5 flex gap-2">
-              {socials.map((s, i) => (
+              {socials.map((s) => (
                 <motion.a
-                  key={i}
+                  key={s.href}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Visit Find My Career on ${s.label}`}
                   whileHover={{ y: -3, scale: 1.1 }}
                   className="w-10 h-10 grid place-items-center rounded-full bg-white/10 hover:bg-accent hover:text-[#0A1628] transition-colors"
                 >
@@ -90,7 +92,16 @@ export function Footer() {
               ))}
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                <a href={`tel:${SITE.phone}`} className="hover:text-accent transition-colors">{SITE.phone}</a>
+                <span className="flex flex-col gap-1">
+                  <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="hover:text-accent transition-colors">{SITE.phone}</a>
+                  <a href={`tel:${SITE.ukPhone.replace(/\s/g, "")}`} className="hover:text-accent transition-colors">{SITE.ukPhone}</a>
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                <a href={`https://wa.me/${SITE.ukPhone.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="hover:text-[#25D366] transition-colors">
+                  WhatsApp: {SITE.ukPhone}
+                </a>
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 text-accent shrink-0 mt-0.5" />

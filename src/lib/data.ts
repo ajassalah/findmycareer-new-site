@@ -18,6 +18,7 @@ export const SITE = {
   tagline: "Study Abroad Consultancy",
   domain: "findmycareer.org.uk",
   phone: "+94 117 221 192",
+  ukPhone: "+44 7454 414404",
   email: "info@findmycareer.org.uk",
   address: SITE_ADDRESSES[0].address,
   addresses: SITE_ADDRESSES,

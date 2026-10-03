@@ -1,0 +1,25 @@
+# Find My Career
+
+Find My Career is an international education consultancy helping students from Sri Lanka plan study abroad journeys.
+
+## Key pages
+
+- Home: https://findmycareer.org.uk/
+- Services: https://findmycareer.org.uk/services
+- Destinations: https://findmycareer.org.uk/destinations
+- Contact: https://findmycareer.org.uk/contact
+- Blog: https://findmycareer.org.uk/blog
+- Privacy policy: https://findmycareer.org.uk/privacy-policy
+
+## Services
+
+University applications, student visa assistance, IELTS preparation, scholarship guidance, pre-departure briefing and post-arrival support.
+
+## Destinations
+
+United Kingdom, Australia, Canada, New Zealand, Germany, France, Ireland and the United States.
+
+## Contact
+
+Email: info@findmycareer.org.uk
+Website: https://findmycareer.org.uk
